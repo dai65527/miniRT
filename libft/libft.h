@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 12:01:52 by dnakano           #+#    #+#             */
-/*   Updated: 2020/10/12 18:16:17 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/10/31 07:39:52 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 # define LIBFT_H
 
 # include <stddef.h>
+
+# define FD_STDIN	0
+# define FD_STDOUT	1
+# define FD_STDERR	2
 
 typedef unsigned char		t_uchar;
 typedef unsigned int		t_uint;
@@ -59,6 +63,7 @@ char				*ft_strnstr(const char *haystack, const char *needle,
 char				*ft_strdup(const char *s1);
 
 int					ft_atoi(const char *str);
+double				ft_atof(const char *s);
 char				*ft_itoa(int n);
 
 void				*ft_calloc(size_t count, size_t size);
@@ -73,6 +78,7 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char *s, int fd);
 void				ft_putendl_fd(char *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+size_t				ft_putstrn_fd(char *s, int fd, size_t n);
 
 t_list				*ft_lstnew(void *content);
 int					ft_lstsize(t_list *lst);
@@ -85,6 +91,7 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
 
-size_t				ft_putstrn_fd(char *s, int fd, size_t n);
+int					get_next_line(int fd, char **line);
+int					ft_printf(const char *format, ...);
 
 #endif
