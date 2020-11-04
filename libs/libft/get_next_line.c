@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/18 18:25:14 by dnakano           #+#    #+#             */
-/*   Updated: 2020/10/29 13:17:20 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/02 17:49:33 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,13 +84,13 @@ int			get_next_line(int fd, char **line)
 	static char		*s[N_FDMAX];
 	char			*buf;
 
-	if (!line || fd < 0 || fd > N_FDMAX)
+	if (fd < 0 || fd > N_FDMAX)
 		return (GNL_EXITERR);
+	if (!line)
+		return (gnl_errend(&s[fd], NULL, NULL));
 	if (!s[fd])
-	{
 		if (!(s[fd] = ft_calloc(1, sizeof(char))))
 			return (GNL_EXITERR);
-	}
 	if (!(buf = (char *)malloc(BUFFER_SIZE)))
 		return (gnl_errend(&s[fd], NULL, NULL));
 	if (ft_memchr(s[fd], '\n', ft_strlen(s[fd])))

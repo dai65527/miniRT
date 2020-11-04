@@ -6,16 +6,31 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2020/10/31 20:39:24 by dnakano          ###   ########.fr        #
+#    Updated: 2020/11/04 06:59:38 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				:=	gcc
 CFLAGS			:=	-Wall -Werror -Wextra
+# CFLAGS			:=	-Wall -Werror -Wextra -fsanitize=address
 NAME			:=	miniRT
 OUTPUTDIR		:=	.
 OUTPUTS			:=	$(addprefix $(OUTPUTDIR)/,$(NAME))
 SRCNAME			:=	minirt.c \
+					mrt_amblight_utils.c \
+					mrt_readfile.c \
+					mrt_readfile_read.c \
+					mrt_readfile_storescene.c \
+					mrt_readfile_utils.c \
+					mrt_scene_utils.c \
+					mrt_cam_utils.c \
+					mrt_cyl_utils.c \
+					mrt_light_utils.c \
+					mrt_plane_utils.c \
+					mrt_rez_utils.c \
+					mrt_sphere_utils.c \
+					mrt_sqr_utils.c \
+					mrt_tgl_utils.c \
 					mrt_errend.c
 SRCDIR			:=	./srcs
 SRCS			:=	$(addprefix $(SRCDIR)/,$(SRCNAME))
@@ -28,9 +43,9 @@ LIBFTNAME		:=	libft.a
 LIBFT			:=	$(LIBFTDIR)/$(LIBFTNAME)
 LIBNAME			:=	$(LIBFTNAME)
 LIBS			:=	$(addprefix $(LIBDIR)/,$(LIBNAME))
-HEADERNAME		:= minirt.h libft.h mlx.h
-HEADERDIR		:= ./includes
-HEADERS			:= $(addprefix $(HEADERDIR)/,$(HEADERNAME))
+HEADERNAME		:=	minirt.h libft.h mlx.h
+HEADERDIR		:=	./includes
+HEADERS			:=	$(addprefix $(HEADERDIR)/,$(HEADERNAME))
 
 .SUFFIXES:		.o .c
 
