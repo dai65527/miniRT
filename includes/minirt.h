@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/04 11:00:14 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/05 07:47:21 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdint.h>
 # include "libft.h"
+# include "mylx.h"
 
 # define FLG_BMP	1
 
@@ -44,7 +45,8 @@ typedef struct	s_scene
 
 typedef struct	s_rez
 {
-	int			size[2];
+	int			x;
+	int			y;
 }				t_rez;
 
 typedef struct	s_amblight
@@ -106,6 +108,22 @@ typedef struct	s_tgl
 	int			color;
 }				t_tgl;
 
+typedef struct	s_screen
+{
+	t_cam		cam;
+	t_rez		rez;
+	int			**px;
+}				t_screen;
+
+typedef struct	s_mlxdata
+{
+	t_mlx		mlx;
+	t_img		*imgs;
+	int			num_imgs;
+	int			x;
+	int			y;
+}				t_mlxdata;
+
 void			mrt_initscene(t_scene *scene);
 void			mrt_freescene(t_scene *scene);
 
@@ -146,5 +164,8 @@ void			mrt_printplane(void *plane_pt);
 void			mrt_printsqr(void *sqr_pt);
 void			mrt_printcyl(void *cyl_pt);
 void			mrt_printtgl(void *tgl_pt);
+
+int				mrt_freescreens(t_list *screens);
+int				mrt_freescreen(void *screen_pt);
 
 #endif

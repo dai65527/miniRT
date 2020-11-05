@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:02 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/04 10:31:48 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/05 11:30:54 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ int		main(int argc, char **argv)
 	if ((res = mrt_readfile(argv[1], &scene)) != NOERR)
 		return (mrt_errend(res));
 	mrt_printscene(scene);
-	return (0);
+	res = mrt_renderscene(&scene);
+	return (res);
 }

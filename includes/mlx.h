@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 07:10:32 by dnakano           #+#    #+#             */
-/*   Updated: 2020/10/29 09:47:37 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/04 17:09:46 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 **	minilibx_mms_20200219. No new function or macros are defined in this header
 **	compared to original mlx.h. Please refer to original mlx.h for description
 **	or comments for each functions.
+**	
+**	dnakano
 */
 
 #ifndef MLX_H
