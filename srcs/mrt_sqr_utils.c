@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 21:04:41 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/04 10:46:29 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/05 19:20:41 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,21 @@ int			mrt_readfile_storescene_sqr(const char *line, t_scene *scene)
 		return (ERR_MALLOCFAIL);
 	}
 	ft_lstadd_back(&(scene->sqrs), newlst);
+	return (NOERR);
+}
+
+int			mrt_readfile_checkscene_sqr(t_list *sqrs)
+{
+	t_sqr	*sqr;
+
+	while (sqrs)
+	{
+		sqr = (t_sqr *)sqrs->content;
+		if (mrt_readfile_checknormorien(sqr->orien))
+			return (ERR_FILEWRONG);
+		if (sqr->size <= 0.0)
+			return (ERR_FILEWRONG);
+		sqrs = sqrs->next;
+	}
 	return (NOERR);
 }

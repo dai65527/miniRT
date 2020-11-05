@@ -6,12 +6,11 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 21:04:41 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/04 10:34:04 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/05 19:13:00 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include "libft.h"
 #include "minirt.h"
 
 void		mrt_printplane(void *plane_pt)
@@ -50,5 +49,19 @@ int			mrt_readfile_storescene_plane(const char *line, t_scene *scene)
 		return (ERR_MALLOCFAIL);
 	}
 	ft_lstadd_back(&(scene->planes), newlst);
+	return (NOERR);
+}
+
+int				mrt_readfile_checkscene_plane(t_list *planes)
+{
+	t_plane	*plane;
+
+	while (planes)
+	{
+		plane = (t_plane *)planes->content;
+		if (mrt_readfile_checknormorien(plane->orien))
+			return (ERR_FILEWRONG);
+		planes = planes->next;
+	}
 	return (NOERR);
 }

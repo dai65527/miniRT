@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 21:04:41 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/04 10:45:06 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/05 18:45:47 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,19 @@ int			mrt_readfile_storescene_sphere(const char *line, t_scene *scene)
 		return (ERR_MALLOCFAIL);
 	}
 	ft_lstadd_back(&(scene->spheres), newlst);
+	return (NOERR);
+}
+
+int			mrt_readfile_checkscene_sphere(t_list *spheres)
+{
+	t_sphere	*sphere;
+
+	while (spheres)
+	{
+		sphere = (t_sphere *)spheres->content;
+		if (sphere->dia <= 0.0)
+			return (ERR_FILEWRONG);
+		spheres = spheres->next;
+	}
 	return (NOERR);
 }

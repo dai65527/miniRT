@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 21:04:41 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/04 10:43:49 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/05 18:47:07 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,5 +58,23 @@ int			mrt_readfile_storescene_cyl(const char *line, t_scene *scene)
 	if (!(newlst = ft_lstnew(cyl)))
 		return (free_and_return(cyl, ERR_MALLOCFAIL));
 	ft_lstadd_back(&(scene->cyls), newlst);
+	return (NOERR);
+}
+
+int			mrt_readfile_checkscene_cyl(t_list *cyls)
+{
+	t_cyl	*cyl;
+
+	while (cyls)
+	{
+		cyl = (t_cyl *)cyls->content;
+		if (mrt_readfile_checknormorien(cyl->orien))
+			return (ERR_FILEWRONG);
+		if (cyl->dia <= 0.0)
+			return (ERR_FILEWRONG);
+		if (cyl->hei <= 0.0)
+			return (ERR_FILEWRONG);
+		cyls = cyls->next;
+	}
 	return (NOERR);
 }

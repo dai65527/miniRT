@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 21:04:41 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/04 10:34:53 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/05 18:48:19 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void		mrt_printtgl(void *tgl_pt)
 	t_tgl	*tgl;
 
 	tgl = (t_tgl *)tgl_pt;
-	ft_printf("first point: [%g, %g, %g]\n",
+	ft_printf("first pos: [%g, %g, %g]\n",
 		tgl->pos1[0], tgl->pos1[1], tgl->pos1[2]);
-	ft_printf("second point: [%g, %g, %g]\n",
+	ft_printf("second pos: [%g, %g, %g]\n",
 		tgl->pos2[0], tgl->pos2[1], tgl->pos2[2]);
-	ft_printf("third point: [%g, %g, %g]\n",
+	ft_printf("third pos: [%g, %g, %g]\n",
 		tgl->pos3[0], tgl->pos3[1], tgl->pos3[2]);
 	ft_printf("color: %d\n", tgl->color);
 	ft_printf("\n");
@@ -54,5 +54,15 @@ int			mrt_readfile_storescene_tgl(const char *line, t_scene *scene)
 		return (ERR_MALLOCFAIL);
 	}
 	ft_lstadd_back(&(scene->tgls), newlst);
+	return (NOERR);
+}
+
+/*
+** nothing to check.
+*/
+
+int			mrt_readfile_checkscene_tgl(t_list *tgls)
+{
+	(void)tgls;
 	return (NOERR);
 }

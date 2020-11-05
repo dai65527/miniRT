@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 22:31:10 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/04 09:23:09 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/05 19:47:36 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int			mrt_readfile(const char *path, t_scene *scene)
 		if (!res_gnl)
 		{
 			close(fd);
-			return (NOERR);
+			return (mrt_readfile_checkscene(scene));
 		}
 	}
 	return (mrt_readfile_errend(ERR_FILEREAD, scene, NULL, fd));
