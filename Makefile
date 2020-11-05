@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2020/11/04 06:59:38 by dnakano          ###   ########.fr        #
+#    Updated: 2020/11/05 19:07:41 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRCNAME			:=	minirt.c \
 					mrt_readfile_read.c \
 					mrt_readfile_storescene.c \
 					mrt_readfile_utils.c \
+					mrt_readfile_checkscene.c \
 					mrt_scene_utils.c \
 					mrt_cam_utils.c \
 					mrt_cyl_utils.c \

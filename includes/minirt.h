@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/05 07:47:21 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/05 19:13:34 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,15 @@ typedef struct	s_amblight
 
 typedef struct	s_cam
 {
-	double		point[3];
+	double		pos[3];
 	double		orien[3];
 	double		fov;
 }				t_cam;
 
 typedef struct	s_light
 {
-	double		point[3];
-	double		bright;
+	double		pos[3];
+	double		ratio;
 	int			color;
 }				t_light;
 
@@ -148,6 +148,19 @@ const char		*mrt_readfile_readint(const char *line, int *n);
 const char		*mrt_readfile_readdouble(const char *line, double *n);
 const char		*mrt_readfile_readvec(const char *line, double *vec);
 const char		*mrt_readfile_readcolor(const char *line, int *color);
+
+int				mrt_readfile_checkscene(t_scene *scene);
+int				mrt_readfile_checkratio(double ratio);	
+int				mrt_readfile_checknormorien(double *vec);
+int				mrt_readfile_checkscene_rez(t_list *rezs);
+int				mrt_readfile_checkscene_amblight(t_list *amblights);
+int				mrt_readfile_checkscene_cam(t_list *cams);
+int				mrt_readfile_checkscene_light(t_list *lights);
+int				mrt_readfile_checkscene_sphere(t_list *spheres);
+int				mrt_readfile_checkscene_plane(t_list *planes);
+int				mrt_readfile_checkscene_sqr(t_list *sqrs);
+int				mrt_readfile_checkscene_cyl(t_list *cyls);
+int				mrt_readfile_checkscene_tgl(t_list *tgls);
 
 int				mrt_readfile_isrt(const char *path);
 int				mrt_readfile_checkendl(const char *line);
