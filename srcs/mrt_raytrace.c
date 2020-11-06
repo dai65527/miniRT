@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 11:37:08 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/06 12:11:39 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/06 16:24:00 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,17 @@ static int	justfortest(t_scene *scene, t_list *screens)
 
 int			mrt_raytrace(t_scene *scene, t_list *screens)
 {
-	// int		res;
-	// t_list	*screens_head;
+	int		res;
+	t_list	*screens_head;
 
-	justfortest(scene, screens);
-	// screens_head = screens;
-	// while (screens)
-	// {
-	// 	res = mrt_raytrace_calc(scene, (t_screen *)(screens->content));
-	// 	if (res != NOERR)
-	// 		return (res);
-	// 	screens = screens->next;
-	// }
+	// justfortest(scene, screens);
+	screens_head = screens;
+	while (screens)
+	{
+		res = mrt_raytrace_calc(scene, (t_screen *)(screens->content));
+		if (res != NOERR)
+			return (res);
+		screens = screens->next;
+	}
 	return (NOERR);
 }

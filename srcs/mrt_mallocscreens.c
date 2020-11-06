@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 11:59:29 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/06 12:10:47 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/06 12:30:09 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,8 @@ int			mrt_mallocscreens(t_scene *scene, t_list **screens)
 		if ((res = mallocscreens_mallocpx(screen)) != NOERR)
 			return (mallocscreens_errend(res, *screens));
 		if (!(newlst = ft_lstnew(screen)))
-			return (mallocscreens_errend_free(ERR_MALLOCFAIL, screen, *screens));
+			return (mallocscreens_errend_free(ERR_MALLOCFAIL, screen,
+				*screens));
 		ft_lstadd_back(screens, newlst);
 		i++;
 	}

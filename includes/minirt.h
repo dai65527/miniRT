@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/06 11:46:25 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/06 19:42:50 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,20 @@ typedef struct	s_tgl
 	int			color;
 }				t_tgl;
 
+typedef struct	s_ray
+{
+	double		*orig;
+	double		dir[3];
+}				t_ray;
+
 typedef struct	s_screen
 {
 	t_cam		cam;
 	t_rez		rez;
 	int			**px;
+	double		unitvec_x[3];
+	double		unitvec_y[3];
+	double		dist;
 }				t_screen;
 
 typedef struct	s_mlxdata
