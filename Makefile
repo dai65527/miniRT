@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2020/11/05 19:07:41 by dnakano          ###   ########.fr        #
+#    Updated: 2020/11/06 11:57:31 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,24 @@ SRCNAME			:=	minirt.c \
 					mrt_sphere_utils.c \
 					mrt_sqr_utils.c \
 					mrt_tgl_utils.c \
-					mrt_errend.c
+					mrt_raytrace.c \
+					mrt_renderscene.c \
+					mrt_renderscene_mlx.c \
+					mrt_createmlximgs.c \
+					mrt_mlxdata_utils.c \
+					mrt_screen_utils.c \
+					mrt_mallocscreens.c \
+					mrt_errend.c \
+					mylx_initmlx.c \
+					mylx_new_image_addr.c \
+					mylx_pixel_put.c \
+					mylx_pixel_put_image.c \
+					mylx_put_image_to_window.c \
+					mylx_key_hook.c \
+					mylx_closebtn_hook.c \
+					mylx_loop.c \
+					mylx_destroy_image.c \
+					mylx_destroy_window.c
 SRCDIR			:=	./srcs
 SRCS			:=	$(addprefix $(SRCDIR)/,$(SRCNAME))
 OBJNAME			:=	$(SRCNAME:%.c=%.o)
@@ -42,7 +59,7 @@ LIBDIR			:=	./libs
 LIBFTDIR		:=	$(LIBDIR)/libft
 LIBFTNAME		:=	libft.a
 LIBFT			:=	$(LIBFTDIR)/$(LIBFTNAME)
-LIBNAME			:=	$(LIBFTNAME)
+LIBNAME			:=	$(LIBFTNAME) libmlx.dylib
 LIBS			:=	$(addprefix $(LIBDIR)/,$(LIBNAME))
 HEADERNAME		:=	minirt.h libft.h mlx.h
 HEADERDIR		:=	./includes

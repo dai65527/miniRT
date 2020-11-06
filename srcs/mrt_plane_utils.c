@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 21:04:41 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/05 19:13:00 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/06 12:25:42 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int			mrt_readfile_storescene_plane(const char *line, t_scene *scene)
 	return (NOERR);
 }
 
-int				mrt_readfile_checkscene_plane(t_list *planes)
+int			mrt_readfile_checkscene_plane(t_list *planes)
 {
 	t_plane	*plane;
 

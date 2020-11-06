@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/05 19:13:34 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/06 11:46:25 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@
 # define ERR_FILEOPEN	0x0102
 # define ERR_FILEREAD	0x0103
 # define ERR_FILEWRONG	0x0104
+# define ERR_MLXINIT	0x1001
+# define ERR_MLXIMG		0x1002
+# define ERR_MLXLOOP	0x1003
+
+# define MRT_WINTITLE	"miniRT"
 
 int				g_flgs;
 
@@ -124,6 +129,13 @@ typedef struct	s_mlxdata
 	int			y;
 }				t_mlxdata;
 
+typedef struct	s_mlxloopparam
+{
+	t_mlxdata	*mlxdata;
+	t_scene		*scene;
+	t_list		*screens;
+}				t_mlxloopparam;
+
 void			mrt_initscene(t_scene *scene);
 void			mrt_freescene(t_scene *scene);
 
@@ -178,7 +190,25 @@ void			mrt_printsqr(void *sqr_pt);
 void			mrt_printcyl(void *cyl_pt);
 void			mrt_printtgl(void *tgl_pt);
 
-int				mrt_freescreens(t_list *screens);
-int				mrt_freescreen(void *screen_pt);
+int				mrt_mallocscreens(t_scene *scene, t_list **screens);
+void			mrt_freescreens(t_list *screens);
+void			mrt_freescreen(void *screen_pt);
+
+int				mrt_renderscene(t_scene *scene);
+int				mrt_raytrace(t_scene *scene, t_list *screens);
+
+int				mrt_renderscene_mlx(t_scene *scene, t_list *screens);
+int				mrt_renderscene_mlx_loop(t_mlxdata *mlxdata, t_scene *scene,
+					t_list *screens);
+int				mrt_renderscene_mlx_changeimgs(int key, t_mlxloopparam *param);
+int				mrt_renderscene_mlx_exit(t_mlxloopparam *param);
+int				mrt_renderscene_errend(int mrt_errno, t_scene *scene,
+					t_list *screens);
+
+int				mrt_createmlximgs(t_mlxdata *mlxdata, t_list *screens);
+void			mrt_createmlximgs_createdata(t_img *img, t_screen *screen);
+
+int				mrt_initmlxdata(t_mlxdata *mlxdata, t_list *screens);
+void			mrt_destroymlxdata(t_mlxdata *mlxdata);
 
 #endif
