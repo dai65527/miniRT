@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mylx_pixel_put_image.c                             :+:      :+:    :+:   */
+/*   mrt_color_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/05 09:23:04 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/07 14:44:47 by dnakano          ###   ########.fr       */
+/*   Created: 2020/11/06 20:40:53 by dnakano           #+#    #+#             */
+/*   Updated: 2020/11/07 07:16:14 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
-#include "mylx.h"
+#include "minirt.h"
 
-int			mylx_pixel_put_to_image(t_img *img, int x, int y, int color)
+int			mrt_color_apply_brightness(int color, double ratio)
 {
-	char			*dst;
+	int		r;
+	int		g;
+	int		b;
 
-	dst = img->data_addr + x * (img->bits_per_pixel / 8) + y * img->size_line;
-	*(unsigned int *)dst = (unsigned int)color;
-	return (0);
+	r = ((color >> 16) & 0xFF) * ratio;
+	g = ((color >> 8) & 0xFF) * ratio;
+	b = (color & 0xFF) * ratio;
+	return ((r << 16) | (g << 8) | b);
 }

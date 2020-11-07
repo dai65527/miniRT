@@ -6,11 +6,32 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 18:09:01 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/06 20:07:57 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/07 13:11:39 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
+
+void		math_3dvec_applylen(double *vec, double len, double *ans)
+{
+	ans[0] = len * vec[0];
+	ans[1] = len * vec[1];
+	ans[2] = len * vec[2];
+}
+
+void		math_3dvec_plus(double *a, double *b, double *ans)
+{
+	ans[0] = a[0] + b[0];
+	ans[1] = a[1] + b[1];
+	ans[2] = a[2] + b[2];
+}
+
+void		math_3dvec_minus(double *a, double *b, double *ans)
+{
+	ans[0] = a[0] - b[0];
+	ans[1] = a[1] - b[1];
+	ans[2] = a[2] - b[2];
+}
 
 double		math_3dvec_norm(double *vec)
 {

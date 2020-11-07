@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/03 18:01:54 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/04 07:23:37 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/07 14:47:31 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ const char	*mrt_readfile_readcolor(const char *line, int *color)
 			return (NULL);
 		if (tmp < 0 || tmp > 255)
 			return (NULL);
-		*color |= (tmp << (i * 8));
+		*color |= (tmp << ((2 - i) * 8));
 		if (i < 2)
 		{
 			while (ft_isspace(*line))

@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 12:00:04 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/06 20:02:13 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/07 13:54:27 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void	calc_screen_unitvec(t_screen *screen)
 	screen->dist = screen->rez.x / screen->dist;
 }
 
-void		calc_ray_to_screenpx(t_ray *ray, t_screen *screen, int i, int j)
+static void	calc_ray_to_screenpx(t_ray *ray, t_screen *screen, int i, int j)
 {
 	double	vec[3];
 
@@ -58,7 +58,6 @@ int			mrt_raytrace_calc(t_scene *scene, t_screen *screen)
 {
 	int		i;
 	int		j;
-	double	dist_cam_to_screen;
 	t_ray	ray;
 
 	ray.orig = screen->cam.pos;
@@ -69,10 +68,18 @@ int			mrt_raytrace_calc(t_scene *scene, t_screen *screen)
 		j = 0;
 		while (j < screen->rez.y)
 		{
-			calc_ray_to_screenpx(&ray, &screen, i, j);
-			screen->px = mrt_raytrace_calc_raytrace(ray, scene);
+			calc_ray_to_screenpx(&ray, screen, i, j);
+			// if (i == screen->rez.x/2 && j == screen->rez.y/2)
+			// if (i == 0 && j == 0)
+			// if (i == 0 && j == screen->rez.y/2)
+			// {
+			// 	ft_printf("ray.orig = [%g, %g, %g]\n", ray.orig[0], ray.orig[1], ray.orig[2]);
+			// 	ft_printf("ray.dir = [%g, %g, %g]\n", ray.dir[0], ray.dir[1], ray.dir[2]);
+			// }
+			screen->px[i][j] = mrt_raytrace_calc_raytrace(&ray, scene);
 			j++;
 		}
 		i++;
 	}
+	return (NOERR);
 }
