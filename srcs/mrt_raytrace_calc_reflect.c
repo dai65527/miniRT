@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 17:46:29 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/07 20:17:03 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/07 20:37:05 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,6 @@ int			mrt_raytrace_calc_reflect(t_surface *surface, t_scene *scene)
 	ft_bzero(color_vec, sizeof(color_vec));
 	calc_reflect_amblight(surface, scene->amblights->content, color_vec_tmp);
 	math_3dvec_plus(color_vec, color_vec_tmp, color_vec);
+	// if (mrt_)
 	return (mrt_color_vec_to_int(color_vec));
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_raytrace_calc_raytrace.c                       :+:      :+:    :+:   */
+/*   mrt_findintersection_sphere.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/06 20:23:00 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/07 20:14:02 by dnakano          ###   ########.fr       */
+/*   Created: 2020/11/07 20:29:11 by dnakano           #+#    #+#             */
+/*   Updated: 2020/11/07 20:30:32 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,6 @@ static t_surface	sphere_solve(t_ray *ray, t_sphere *sphere)
 	return (surface);
 }
 
-int					mrt_surface_isnearer(t_surface old, t_surface new)
-{
-	if (new.dist <= 0.0)
-		return (0);
-	return (old.dist <= 0.0 || new.dist < old.dist);
-}
-
 t_surface			mrt_findintersection_sphere(t_ray *ray, t_list *spheres)
 {
 	t_sphere	*sphere;
@@ -74,45 +67,4 @@ t_surface			mrt_findintersection_sphere(t_ray *ray, t_list *spheres)
 		spheres = spheres->next;
 	}
 	return (surface);
-}
-
-static t_surface	findintersection(t_ray *ray, t_scene *scene)
-{
-	t_surface	surface;
-	t_surface	surface_tmp;
-
-	surface.dist = -1.0;
-	surface_tmp = mrt_findintersection_sphere(ray, scene->spheres);
-	if (mrt_surface_isnearer(surface, surface_tmp))
-		surface = surface_tmp;
-	// surface_tmp = mrt_getintersection_plane(ray, scene);
-	// if (get_intersectionsurface_isnearer(surface, surface_tmp))
-	// 	surface = surface_tmp;
-	// surface_tmp = mrt_getintersection_sqr(ray, scene);
-	// if (get_intersectionsurface_isnearer(surface, surface_tmp))
-	// 	surface = surface_tmp;
-	// surface_tmp = mrt_getintersection_cyl(ray, scene);
-	// if (get_intersectionsurface_isnearer(surface, surface_tmp))
-	// 	surface = surface_tmp;
-	// surface_tmp = mrt_getintersection_tgl(ray, scene);
-	// if (get_intersectionsurface_isnearer(surface, surface_tmp))
-	// 	surface = surface_tmp;
-	return (surface);
-}
-
-int					mrt_raytrace_calc_raytrace(t_ray *ray, t_scene *scene)
-{
-	int			color;
-	t_surface	surface;
-
-	surface = findintersection(ray, scene);
-	if (surface.dist > 0)
-		color = mrt_raytrace_calc_reflect(&surface, scene);
-	else
-	{
-		color = ((t_amblight *)(scene->amblights->content))->color;
-		color = mrt_color_apply_brightness(color,
-			((t_amblight *)(scene->amblights->content))->ratio);
-	}
-	return (color);
 }

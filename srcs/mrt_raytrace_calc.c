@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 12:00:04 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/07 17:43:00 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/07 20:34:13 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,23 @@ static void	calc_ray_to_screenpx(t_ray *ray, t_screen *screen, int i, int j)
 	math_3dvec_normalize(vec, ray->dir);
 }
 
+static int	calc_raytrace(t_ray *ray, t_scene *scene)
+{
+	int			color;
+	t_surface	surface;
+
+	surface = mrt_findintersection(ray, scene);
+	if (surface.dist > 0)
+		color = mrt_raytrace_calc_reflect(&surface, scene);
+	else
+	{
+		color = ((t_amblight *)(scene->amblights->content))->color;
+		color = mrt_color_apply_brightness(color,
+			((t_amblight *)(scene->amblights->content))->ratio);
+	}
+	return (color);
+}
+
 int			mrt_raytrace_calc(t_scene *scene, t_screen *screen)
 {
 	int		i;
@@ -67,7 +84,7 @@ int			mrt_raytrace_calc(t_scene *scene, t_screen *screen)
 		while (j < screen->rez.y)
 		{
 			calc_ray_to_screenpx(&ray, screen, i, j);
-			screen->px[i][j] = mrt_raytrace_calc_raytrace(&ray, scene);
+			screen->px[i][j] = calc_raytrace(&ray, scene);
 			j++;
 		}
 		i++;

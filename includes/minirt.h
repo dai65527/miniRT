@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/07 20:18:53 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/07 20:38:57 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,6 +228,10 @@ int				mrt_renderscene_mlx_changeimgs(int key, t_mlxloopparam *param);
 int				mrt_renderscene_mlx_exit(t_mlxloopparam *param);
 int				mrt_renderscene_errend(int mrt_errno, t_scene *scene,
 					t_list *screens);
+
+t_surface		mrt_findintersection(t_ray *ray, t_scene *scene);
+t_surface		mrt_findintersection_sphere(t_ray *ray, t_list *spheres);
+int				mrt_surface_isnearer(t_surface old, t_surface new);
 
 int				mrt_createmlximgs(t_mlxdata *mlxdata, t_list *screens);
 void			mrt_createmlximgs_createdata(t_img *img, t_screen *screen);
