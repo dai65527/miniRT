@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2020/11/06 22:09:43 by dnakano          ###   ########.fr        #
+#    Updated: 2020/11/07 20:12:25 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,6 +41,7 @@ SRCNAME			:=	minirt.c \
 					mrt_raytrace.c \
 					mrt_raytrace_calc.c \
 					mrt_raytrace_calc_raytrace.c \
+					mrt_raytrace_calc_reflect.c \
 					mrt_color_utils.c \
 					mrt_errend.c \
 					math_3dvec_utils.c \

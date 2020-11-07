@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 20:23:00 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/07 14:53:27 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/07 20:14:02 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int					mrt_raytrace_calc_raytrace(t_ray *ray, t_scene *scene)
 
 	surface = findintersection(ray, scene);
 	if (surface.dist > 0)
-		color = surface.color;
+		color = mrt_raytrace_calc_reflect(&surface, scene);
 	else
 	{
 		color = ((t_amblight *)(scene->amblights->content))->color;

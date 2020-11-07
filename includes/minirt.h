@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/07 12:54:46 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/07 20:18:53 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,7 +215,11 @@ int				mrt_renderscene(t_scene *scene);
 int				mrt_raytrace(t_scene *scene, t_list *screens);
 int				mrt_raytrace_calc(t_scene *scene, t_screen *screen);
 int				mrt_raytrace_calc_raytrace(t_ray *ray, t_scene *scene);
+int				mrt_raytrace_calc_reflect(t_surface *surface, t_scene *scene);
+
 int				mrt_color_apply_brightness(int color, double ratio);
+void			mrt_color_int_to_vec(int color, double *color_vec);
+int				mrt_color_vec_to_int(double *color_vec);
 
 int				mrt_renderscene_mlx(t_scene *scene, t_list *screens);
 int				mrt_renderscene_mlx_loop(t_mlxdata *mlxdata, t_scene *scene,
