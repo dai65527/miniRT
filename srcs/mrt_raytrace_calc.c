@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 12:00:04 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/07 20:34:13 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/08 10:43:18 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ static void	calc_ray_to_screenpx(t_ray *ray, t_screen *screen, int i, int j)
 	double	vec[3];
 
 	math_3dvec_applylen(screen->cam.orien, screen->dist, vec);
-	vec[0] += ((double)i - (double)screen->rez.x / 2.0) * screen->unitvec_x[0];
-	vec[1] += ((double)i - (double)screen->rez.x / 2.0) * screen->unitvec_x[1];
-	vec[2] += ((double)i - (double)screen->rez.x / 2.0) * screen->unitvec_x[2];
-	vec[0] -= ((double)j - (double)screen->rez.y / 2.0) * screen->unitvec_y[0];
-	vec[1] -= ((double)j - (double)screen->rez.y / 2.0) * screen->unitvec_y[1];
-	vec[2] -= ((double)j - (double)screen->rez.y / 2.0) * screen->unitvec_y[2];
+	vec[0] -= ((double)i - (double)screen->rez.x / 2.0) * screen->unitvec_x[0];
+	vec[1] -= ((double)i - (double)screen->rez.x / 2.0) * screen->unitvec_x[1];
+	vec[2] -= ((double)i - (double)screen->rez.x / 2.0) * screen->unitvec_x[2];
+	vec[0] += ((double)j - (double)screen->rez.y / 2.0) * screen->unitvec_y[0];
+	vec[1] += ((double)j - (double)screen->rez.y / 2.0) * screen->unitvec_y[1];
+	vec[2] += ((double)j - (double)screen->rez.y / 2.0) * screen->unitvec_y[2];
 	math_3dvec_normalize(vec, ray->dir);
 }
 
@@ -59,7 +59,7 @@ static int	calc_raytrace(t_ray *ray, t_scene *scene)
 
 	surface = mrt_findintersection(ray, scene);
 	if (surface.dist > 0)
-		color = mrt_raytrace_calc_reflect(&surface, scene);
+		color = mrt_raytrace_calc_reflect(ray, &surface, scene);
 	else
 	{
 		color = ((t_amblight *)(scene->amblights->content))->color;
@@ -83,8 +83,10 @@ int			mrt_raytrace_calc(t_scene *scene, t_screen *screen)
 		j = 0;
 		while (j < screen->rez.y)
 		{
+			// ft_printf("[i,j]=[%d,%d]", i, j);
 			calc_ray_to_screenpx(&ray, screen, i, j);
 			screen->px[i][j] = calc_raytrace(&ray, scene);
+			// ft_printf("\n");
 			j++;
 		}
 		i++;

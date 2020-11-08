@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 10:32:00 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/06 12:24:11 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/07 23:00:07 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int			mrt_initmlxdata(t_mlxdata *mlxdata, t_list *screens)
 	mlxdata->y = ((t_screen *)(screens->content))->rez.y;
 	mlxdata->imgs = NULL;
 	mlxdata->num_imgs = 0;
-	if (mylx_initmlx(&mlxdata->mlx, mlxdata->x, mlxdata->y, MRT_WINTITLE))
+	if (mylx_initmlx(&mlxdata->mlx, mlxdata->x, mlxdata->y, WINDOWTITLE))
 		return (ERR_MLXINIT);
 	return (NOERR);
 }

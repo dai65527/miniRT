@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/07 20:38:57 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/08 11:03:55 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,13 @@
 # define ERR_MLXIMG		0x1002
 # define ERR_MLXLOOP	0x1003
 
-# define MRT_WINTITLE	"miniRT"
+/*
+** configuration
+*/
+# define WINDOWTITLE		"miniRT"
+# define MRT_EPSIRON		1.0e-10
+# define SPECREFLEC_FACTOR	1.0
+# define SHININESS			20.0
 
 int				g_flgs;
 
@@ -215,7 +221,7 @@ int				mrt_renderscene(t_scene *scene);
 int				mrt_raytrace(t_scene *scene, t_list *screens);
 int				mrt_raytrace_calc(t_scene *scene, t_screen *screen);
 int				mrt_raytrace_calc_raytrace(t_ray *ray, t_scene *scene);
-int				mrt_raytrace_calc_reflect(t_surface *surface, t_scene *scene);
+int				mrt_raytrace_calc_reflect(t_ray *ray, t_surface *surface, t_scene *scene);
 
 int				mrt_color_apply_brightness(int color, double ratio);
 void			mrt_color_int_to_vec(int color, double *color_vec);
