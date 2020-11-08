@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 17:46:29 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/08 11:04:16 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/08 18:38:15 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,18 @@ static void	calc_reflect_amblight(t_surface *surface, t_amblight *amblight, doub
 
  int	has_obstruction(t_surface *surface, t_light *light, t_scene *scene)
 {
-	t_ray		ray_surface_light;
+	double		vec_s2l[3];
+	t_ray		ray_s2l;
 	t_surface	obstsurface;
 
-	ray_surface_light.orig = surface->pos;
-	math_3dvec_minus(light->pos, surface->pos, ray_surface_light.dir);
-	math_3dvec_normalize(ray_surface_light.dir, ray_surface_light.dir);
-	obstsurface = mrt_findintersection(&ray_surface_light, scene);
-	return (obstsurface.dist > MRT_EPSIRON);
+	ray_s2l.orig = surface->pos;
+	math_3dvec_minus(light->pos, surface->pos, vec_s2l);
+	math_3dvec_normalize(vec_s2l, ray_s2l.dir);
+	// ft_printf("pos=[%g,%g,%g], ", surface->pos[0], surface->pos[1], surface->pos[2]);
+	// ft_printf("ray=[%g,%g,%g]", ray_s2l.dir[0], ray_s2l.dir[1], ray_s2l.dir[2]);
+	obstsurface = mrt_findintersection(&ray_s2l, scene);
+	// ft_printf("obstdist=%g", obstsurface.dist);
+	return (obstsurface.dist > MRT_EPSIRON && obstsurface.dist < math_3dvec_norm(vec_s2l));
 }
 
 static void	calc_reflect_light(t_ray *ray, t_surface *surface, t_light *light, double *color_vec)
@@ -54,7 +58,7 @@ static void	calc_reflect_light(t_ray *ray, t_surface *surface, t_light *light, d
 
 	math_3dvec_minus(light->pos, surface->pos, vec_s2l);
 	math_3dvec_normalize(vec_s2l, vec_s2l);
-	if ((innnerprod_tmp = math_3dvec_innerprod(surface->normvec, vec_s2l)) < 0.0)
+	if ((innnerprod_tmp = math_3dvec_innerprod(surface->normvec, vec_s2l)) < MRT_EPSIRON)
 	{
 		ft_bzero(color_vec, sizeof(double) * 3);
 		return ;
@@ -68,7 +72,7 @@ static void	calc_reflect_light(t_ray *ray, t_surface *surface, t_light *light, d
 	math_3dvec_minus(vec_tmp, vec_s2l, vec_tmp);
 	if ((innnerprod_tmp = -math_3dvec_innerprod(ray->dir, vec_tmp)) < 0.0)
 		return ;
-	math_3dvec_applylen(lightcolor_vec, SPECREFLEC_FACTOR * pow(innnerprod_tmp, SHININESS), vec_tmp);
+	math_3dvec_applylen(lightcolor_vec, SPECREFLEC_FACTOR * pow(innnerprod_tmp, SHININESS) * light->ratio, vec_tmp);
 	math_3dvec_plus(color_vec, vec_tmp, color_vec);
 }
 

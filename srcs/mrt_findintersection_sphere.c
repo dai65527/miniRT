@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 20:29:11 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/07 20:30:32 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/08 12:05:07 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static t_surface	sphere_solve(t_ray *ray, t_sphere *sphere)
 	t_surface	surface;
 	double		vec[3];
 
-	if ((surface.dist = sphere_calc_dist(ray, sphere)) <= 0.0)
+	if ((surface.dist = sphere_calc_dist(ray, sphere)) <= MRT_EPSIRON)
 		return (surface);
 	math_3dvec_applylen(ray->dir, surface.dist, vec);
 	math_3dvec_plus(ray->orig, vec, surface.pos);
