@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/09 13:13:43 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/09 19:35:20 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,9 +240,12 @@ t_surface		mrt_findintersection_sphere(t_ray *ray, t_list *spheres);
 t_surface		mrt_findintersection_plane(t_ray *ray, t_list *planes);
 t_surface		mrt_findintersection_plane_solve(t_ray *ray, t_plane *plane);
 t_surface		mrt_findintersection_sqr(t_ray *ray, t_list *sqrs);
+t_surface		mrt_findintersection_cyl(t_ray *ray, t_list *cyls);
 t_surface		mrt_findintersection_tgl(t_ray *ray, t_list *tgls);
+
 int				mrt_isineps(double var);
 int				mrt_surface_isnearer(t_surface old, t_surface new);
+void			mrt_surface_calcpos_from_dirdist(t_surface *surface, t_ray *ray);
 
 int				mrt_createmlximgs(t_mlxdata *mlxdata, t_list *screens);
 void			mrt_createmlximgs_createdata(t_img *img, t_screen *screen);

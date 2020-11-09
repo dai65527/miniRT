@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 20:29:11 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/09 17:38:50 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/09 17:43:35 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static double		sphere_calc_dist(t_ray *ray, t_sphere *sphere, int *flg_inside)
 	c = math_3dvec_norm(vec);
 	c = c * c - sphere->dia * sphere->dia / 4.0;
 	d = b * b - 4.0 * c;
-	if (d < 0)
+	if (d < -MRT_EPS)
 		return (-1);
 	if (mrt_isineps(d))
 		return (-b / 2);
