@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 17:46:29 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/08 18:38:15 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/09 08:49:17 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,7 @@ static void	calc_reflect_amblight(t_surface *surface, t_amblight *amblight, doub
 	ray_s2l.orig = surface->pos;
 	math_3dvec_minus(light->pos, surface->pos, vec_s2l);
 	math_3dvec_normalize(vec_s2l, ray_s2l.dir);
-	// ft_printf("pos=[%g,%g,%g], ", surface->pos[0], surface->pos[1], surface->pos[2]);
-	// ft_printf("ray=[%g,%g,%g]", ray_s2l.dir[0], ray_s2l.dir[1], ray_s2l.dir[2]);
 	obstsurface = mrt_findintersection(&ray_s2l, scene);
-	// ft_printf("obstdist=%g", obstsurface.dist);
 	return (obstsurface.dist > MRT_EPSIRON && obstsurface.dist < math_3dvec_norm(vec_s2l));
 }
 

@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 20:29:11 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/08 12:05:07 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/09 09:07:26 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,13 @@ static t_surface	sphere_solve(t_ray *ray, t_sphere *sphere)
 
 t_surface			mrt_findintersection_sphere(t_ray *ray, t_list *spheres)
 {
-	t_sphere	*sphere;
 	t_surface	surface;
 	t_surface	surface_tmp;
 
 	surface.dist = -1.0;
 	while (spheres)
 	{
-		sphere = (t_sphere *)spheres->content;
-		surface_tmp = sphere_solve(ray, sphere);
+		surface_tmp = sphere_solve(ray, spheres->content);
 		if (mrt_surface_isnearer(surface, surface_tmp))
 			surface = surface_tmp;
 		spheres = spheres->next;

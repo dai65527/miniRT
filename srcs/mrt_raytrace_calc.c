@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 12:00:04 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/08 20:01:53 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/09 10:12:14 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "math_utils.h"
 #include "minirt.h"
 
-static void	calc_screen_unitvec(t_screen *screen)
+static void	calc_screen_unitvecdist(t_screen *screen)
 {
 	double	tmp;
 
@@ -25,17 +25,15 @@ static void	calc_screen_unitvec(t_screen *screen)
 	}
 	else
 	{
-		tmp = screen->cam.orien[0] * screen->cam.orien[0];
-		tmp += screen->cam.orien[1] * screen->cam.orien[1];
-		tmp = sqrt(tmp);
+		tmp = sqrt(screen->cam.orien[0] * screen->cam.orien[0]
+					+ screen->cam.orien[1] * screen->cam.orien[1]);
 		screen->unitvec_x[0] = -screen->cam.orien[1] / tmp;
 		screen->unitvec_x[1] = screen->cam.orien[0] / tmp;
 	}
 	screen->unitvec_x[2] = 0.0;
 	math_3dvec_outerprod(screen->unitvec_x, screen->cam.orien,
 							screen->unitvec_y);
-	screen->dist = tan(screen->cam.fov * M_PI / 180.0 / 2.0);
-	screen->dist = screen->rez.x / screen->dist;
+	screen->dist = screen->rez.x / tan(screen->cam.fov * M_PI / 180.0 / 2.0);
 }
 
 static void	calc_ray_to_screenpx(t_ray *ray, t_screen *screen, int i, int j)
@@ -43,7 +41,6 @@ static void	calc_ray_to_screenpx(t_ray *ray, t_screen *screen, int i, int j)
 	double	vec[3];
 
 	math_3dvec_applylen(screen->cam.orien, screen->dist, vec);
-	// origin
 	vec[0] -= ((double)i - (double)screen->rez.x / 2.0) * screen->unitvec_x[0];
 	vec[1] -= ((double)i - (double)screen->rez.x / 2.0) * screen->unitvec_x[1];
 	vec[2] -= ((double)i - (double)screen->rez.x / 2.0) * screen->unitvec_x[2];
@@ -79,7 +76,7 @@ int			mrt_raytrace_calc(t_scene *scene, t_screen *screen)
 	t_ray	ray;
 
 	ray.orig = screen->cam.pos;
-	calc_screen_unitvec(screen);
+	calc_screen_unitvecdist(screen);
 	i = 0;
 	while (i < screen->rez.x)
 	{

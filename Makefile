@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2020/11/08 12:53:44 by dnakano          ###   ########.fr        #
+#    Updated: 2020/11/09 10:16:12 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,9 +45,11 @@ SRCNAME			:=	minirt.c \
 					mrt_findintersection.c \
 					mrt_findintersection_sphere.c \
 					mrt_findintersection_plane.c \
+					mrt_findintersection_sqr.c \
 					mrt_findintersection_utils.c \
 					mrt_errend.c \
 					math_3dvec_utils.c \
+					math_abs.c \
 					mylx_initmlx.c \
 					mylx_new_image_addr.c \
 					mylx_pixel_put.c \

@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/08 12:13:31 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/09 09:04:38 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,6 +238,8 @@ int				mrt_renderscene_errend(int mrt_errno, t_scene *scene,
 t_surface		mrt_findintersection(t_ray *ray, t_scene *scene);
 t_surface		mrt_findintersection_sphere(t_ray *ray, t_list *spheres);
 t_surface		mrt_findintersection_plane(t_ray *ray, t_list *planes);
+t_surface		mrt_findintersection_plane_solve(t_ray *ray, t_plane *plane);
+t_surface		mrt_findintersection_sqr(t_ray *ray, t_list *sqrs);
 int				mrt_isinepsilon(double var);
 int				mrt_surface_isnearer(t_surface old, t_surface new);
 
