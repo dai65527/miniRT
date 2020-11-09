@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 11:52:32 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/09 10:14:59 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/09 13:13:43 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ t_surface	mrt_findintersection_plane_solve(t_ray *ray, t_plane *plane)
 
 	surface.dist = -1.0;
 	innerprod_tmp = math_3dvec_innerprod(ray->dir, plane->orien);	
-	if (mrt_isinepsilon(innerprod_tmp))
+	if (mrt_isineps(innerprod_tmp))
 		return (surface);
 	else if (innerprod_tmp < 0.0)
 		math_3dvec_applylen(plane->orien, 1.0, surface.normvec);

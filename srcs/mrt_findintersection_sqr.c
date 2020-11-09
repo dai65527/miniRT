@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 08:57:50 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/09 10:26:03 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/09 13:13:43 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ static int		sqr_isinsqr(t_sqr *sqr, t_surface surface)
 	double		tmp;
 
 	math_3dvec_minus(surface.pos, sqr->pos, vec_cp);
-	if (mrt_isinepsilon(surface.normvec[0])
-		&& mrt_isinepsilon(surface.normvec[1]))
+	if (mrt_isineps(surface.normvec[0])
+		&& mrt_isineps(surface.normvec[1]))
 	{
 		unitvec_x[0] = 1.0;
 		unitvec_x[1] = 0.0;
@@ -50,7 +50,7 @@ static t_surface	sqr_solve(t_ray *ray, t_sqr *sqr)
 	math_3dvec_applylen(sqr->pos, 1.0, plane.pos);
 	plane.color = sqr->color;
 	surface = mrt_findintersection_plane_solve(ray, &plane);
-	if (surface.dist < MRT_EPSIRON)
+	if (surface.dist < MRT_EPS)
 		return (surface);
 	if (!sqr_isinsqr(sqr, surface))
 		surface.dist = -1.0;

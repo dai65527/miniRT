@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/09 09:04:38 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/09 13:13:43 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 ** configuration
 */
 # define WINDOWTITLE		"miniRT"
-# define MRT_EPSIRON		1.0e-10
+# define MRT_EPS		1.0e-10
 # define SPECREFLEC_FACTOR	1.0
 # define SHININESS			20.0
 
@@ -240,7 +240,8 @@ t_surface		mrt_findintersection_sphere(t_ray *ray, t_list *spheres);
 t_surface		mrt_findintersection_plane(t_ray *ray, t_list *planes);
 t_surface		mrt_findintersection_plane_solve(t_ray *ray, t_plane *plane);
 t_surface		mrt_findintersection_sqr(t_ray *ray, t_list *sqrs);
-int				mrt_isinepsilon(double var);
+t_surface		mrt_findintersection_tgl(t_ray *ray, t_list *tgls);
+int				mrt_isineps(double var);
 int				mrt_surface_isnearer(t_surface old, t_surface new);
 
 int				mrt_createmlximgs(t_mlxdata *mlxdata, t_list *screens);

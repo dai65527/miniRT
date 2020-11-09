@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 12:00:04 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/09 10:12:14 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/09 13:13:43 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	calc_screen_unitvecdist(t_screen *screen)
 {
 	double	tmp;
 
-	if (mrt_isinepsilon(screen->cam.orien[0]) && mrt_isinepsilon(screen->cam.orien[1]))
+	if (mrt_isineps(screen->cam.orien[0]) && mrt_isineps(screen->cam.orien[1]))
 	{
 		screen->unitvec_x[0] = 1.0;
 		screen->unitvec_x[1] = 0.0;
@@ -56,7 +56,7 @@ static int	calc_screencolor(t_ray *ray, t_scene *scene)
 	t_surface	surface;
 
 	surface = mrt_findintersection(ray, scene);
-	if (surface.dist > MRT_EPSIRON)
+	if (surface.dist > MRT_EPS)
 	{
 		color = mrt_raytrace_calc_reflect(ray, &surface, scene);
 	}

@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 17:46:29 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/09 08:49:17 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/09 13:13:14 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	calc_reflect_amblight(t_surface *surface, t_amblight *amblight, doub
 	math_3dvec_minus(light->pos, surface->pos, vec_s2l);
 	math_3dvec_normalize(vec_s2l, ray_s2l.dir);
 	obstsurface = mrt_findintersection(&ray_s2l, scene);
-	return (obstsurface.dist > MRT_EPSIRON && obstsurface.dist < math_3dvec_norm(vec_s2l));
+	return (obstsurface.dist > MRT_EPS && obstsurface.dist < math_3dvec_norm(vec_s2l));
 }
 
 static void	calc_reflect_light(t_ray *ray, t_surface *surface, t_light *light, double *color_vec)
@@ -55,7 +55,7 @@ static void	calc_reflect_light(t_ray *ray, t_surface *surface, t_light *light, d
 
 	math_3dvec_minus(light->pos, surface->pos, vec_s2l);
 	math_3dvec_normalize(vec_s2l, vec_s2l);
-	if ((innnerprod_tmp = math_3dvec_innerprod(surface->normvec, vec_s2l)) < MRT_EPSIRON)
+	if ((innnerprod_tmp = math_3dvec_innerprod(surface->normvec, vec_s2l)) < MRT_EPS)
 	{
 		ft_bzero(color_vec, sizeof(double) * 3);
 		return ;
