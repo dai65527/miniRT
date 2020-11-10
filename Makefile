@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2020/11/10 19:21:42 by dnakano          ###   ########.fr        #
+#    Updated: 2020/11/10 20:13:42 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,11 +50,14 @@ SRCNAME			:=	minirt.c \
 					mrt_errend.c \
 					math_3dvec_utils.c \
 					math_abs.c \
+					mylx_init.c \
+					mylx_new_window.c \
 					mylx_initmlx.c \
 					mylx_new_image_addr.c \
 					mylx_pixel_put.c \
 					mylx_pixel_put_image.c \
 					mylx_put_image_to_window.c \
+					mylx_get_screen_size.c \
 					mylx_key_hook.c \
 					mylx_closebtn_hook.c \
 					mylx_loop.c \

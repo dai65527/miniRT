@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/10 19:21:42 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/10 20:20:21 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,7 +246,6 @@ int				mrt_surface_isnearer(t_surface old, t_surface new);
 void			mrt_surface_calcpos_from_dirdist(t_surface *surface, t_ray *ray);
 
 int				mrt_createmlximgs(t_mlxdata *mlxdata, t_list *screens);
-void			mrt_createmlximgs_createdata(t_img *img, t_screen *screen);
 
 int				mrt_initmlxdata(t_mlxdata *mlxdata, t_list *screens);
 void			mrt_destroymlxdata(t_mlxdata *mlxdata);

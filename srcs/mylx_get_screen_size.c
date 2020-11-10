@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mylx_initmlx.c                                     :+:      :+:    :+:   */
+/*   mylx_get_screen_size.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/04 20:09:14 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/10 19:48:09 by dnakano          ###   ########.fr       */
+/*   Created: 2020/11/10 20:04:28 by dnakano           #+#    #+#             */
+/*   Updated: 2020/11/10 20:08:40 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mlx.h"
-#include "mylx.h"
 
-int		mylx_initmlx(t_mlx *mlx, int x, int y, char *title)
+int		mylx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey)
 {
-	if (!(mlx->ptr = mlx_init()))
-		return (1);
-	if (!(mlx->win = mlx_new_window(mlx->ptr, x, y, title)))
-		return (1);
-	return (0);
+	return (mlx_get_screen_size(mlx_ptr, sizex, sizey));
 }

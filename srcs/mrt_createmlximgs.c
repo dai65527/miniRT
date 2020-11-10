@@ -6,23 +6,28 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 11:20:39 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/06 12:23:35 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/10 20:45:29 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "minirt.h"
 
-void		mrt_createmlximgs_createdata(t_img *img, t_screen *screen)
+static void	mrt_createmlximgs_createdata(t_img *img, t_screen *screen,
+				int x_max, int y_max)
 {
 	int		i;
 	int		j;
+	int		x;
+	int		y;
 
+	x = screen->rez.x > x_max ? x_max : screen->rez.x;
+	y = screen->rez.y > y_max ? y_max : screen->rez.y;
 	i = 0;
-	while (i < screen->rez.x)
+	while (i < x)
 	{
 		j = 0;
-		while (j < screen->rez.y)
+		while (j < y)
 		{
 			mylx_pixel_put_to_image(img, i, j, screen->px[i][j]);
 			j++;
@@ -47,7 +52,7 @@ int			mrt_createmlximgs(t_mlxdata *mlxdata, t_list *screens)
 		screen = (t_screen *)screens->content;
 		if (mylx_new_image_addr(mlxdata->mlx, &mlxdata->imgs[i], mlxdata->x, mlxdata->y))
 			return (ERR_MLXIMG);
-		mrt_createmlximgs_createdata(&mlxdata->imgs[i], screen);
+		mrt_createmlximgs_createdata(&mlxdata->imgs[i], screen, mlxdata->x, mlxdata->y);
 		screens = screens->next;
 		i++;
 	}

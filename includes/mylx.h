@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 16:32:23 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/06 10:20:55 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/10 20:08:54 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,11 @@ typedef struct	s_img
 	int			endian;
 }				t_img;
 
+void			*mylx_init(void);
 int				mylx_initmlx(t_mlx *mlx, int x, int y, char *title);
+void			*mylx_new_window(void *mlx_ptr, int size_x, int size_y,
+					char *title);
+int				mylx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
 int				mylx_pixel_put(t_mlx mlx, int x, int y, int color);
 int				mylx_pixel_put_to_image(t_img *img, int x, int y, int color);
 int				mylx_new_image_addr(t_mlx mlx, t_img *img, int x, int y);
