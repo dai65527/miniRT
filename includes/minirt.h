@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/10 18:50:34 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/10 18:56:06 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@
 # include "libft.h"
 # include "mylx.h"
 
-# define FLG_BMP	1
-
+/*
+** err_code
+*/
 # define NOERR			0x0000
 # define ERR_ARGC		0x0001
 # define ERR_OPT		0x0002
@@ -35,11 +36,9 @@
 ** configuration
 */
 # define WINDOWTITLE		"miniRT"
-# define MRT_EPS		1.0e-9
+# define MRT_EPS			1.0e-9
 # define SPECREFLEC_FACTOR	1.0
 # define SHININESS			20.0
-
-int				g_flgs;
 
 typedef struct	s_scene
 {
