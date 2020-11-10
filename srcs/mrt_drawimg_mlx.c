@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mrt_renderscene_mlx.c                              :+:      :+:    :+:   */
+/*   mrt_drawimg_mlx.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/11/05 21:42:03 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/06 12:16:23 by dnakano          ###   ########.fr       */
+/*   Created: 2020/11/10 19:18:20 by dnakano           #+#    #+#             */
+/*   Updated: 2020/11/10 19:21:42 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "minirt.h"
 
-int			mrt_renderscene_errend(int mrt_errno, t_scene *scene,
+int			mrt_drawimg_errend(int mrt_errno, t_scene *scene,
 				t_list *screens)
 {
 	mrt_freescene(scene);
@@ -21,7 +21,7 @@ int			mrt_renderscene_errend(int mrt_errno, t_scene *scene,
 	return (mrt_errno);
 }
 
-int			mrt_renderscene_mlx_exit(t_mlxloopparam *param)
+int			mrt_drawimg_mlx_exit(t_mlxloopparam *param)
 {
 	mrt_destroymlxdata(param->mlxdata);
 	mrt_freescene(param->scene);
@@ -29,7 +29,7 @@ int			mrt_renderscene_mlx_exit(t_mlxloopparam *param)
 	exit(NOERR);
 }
 
-int			mrt_renderscene_mlx_changeimgs(int key, t_mlxloopparam *param)
+int			mrt_drawimg_mlx_changeimgs(int key, t_mlxloopparam *param)
 {
 	static int	index_img = 0;
 
@@ -40,7 +40,7 @@ int			mrt_renderscene_mlx_changeimgs(int key, t_mlxloopparam *param)
 	else
 	{
 		if (key == KEY_ESC)
-			mrt_renderscene_mlx_exit(param);
+			mrt_drawimg_mlx_exit(param);
 		return (0);
 	}
 	if (index_img < 0)
@@ -50,7 +50,7 @@ int			mrt_renderscene_mlx_changeimgs(int key, t_mlxloopparam *param)
 	return (0);
 }
 
-int			mrt_renderscene_mlx_loop(t_mlxdata *mlxdata, t_scene *scene,
+int			mrt_drawimg_mlx_loop(t_mlxdata *mlxdata, t_scene *scene,
 				t_list *screens)
 {
 	t_mlxloopparam	param;
@@ -58,24 +58,24 @@ int			mrt_renderscene_mlx_loop(t_mlxdata *mlxdata, t_scene *scene,
 	param.mlxdata = mlxdata;
 	param.scene = scene;
 	param.screens = screens;
-	mylx_key_hook(mlxdata->mlx, mrt_renderscene_mlx_changeimgs, &param);
-	mylx_closebtn_hook(mlxdata->mlx, mrt_renderscene_mlx_exit, &param);
+	mylx_key_hook(mlxdata->mlx, mrt_drawimg_mlx_changeimgs, &param);
+	mylx_closebtn_hook(mlxdata->mlx, mrt_drawimg_mlx_exit, &param);
 	mylx_put_image_to_window(mlxdata->mlx, mlxdata->imgs[0], 0, 0);
 	mylx_loop(mlxdata->mlx);
 	return (ERR_MLXLOOP);
 }
 
-int			mrt_renderscene_mlx(t_scene *scene, t_list *screens)
+int			mrt_drawimg_mlx(t_scene *scene, t_list *screens)
 {
 	int				res;
 	t_mlxdata		mlxdata;
 
 	if ((res = mrt_initmlxdata(&mlxdata, screens)) != NOERR)
-		return (mrt_renderscene_errend(res, scene, screens));
+		return (mrt_drawimg_errend(res, scene, screens));
 	if ((res = mrt_createmlximgs(&mlxdata, screens)) != NOERR)
 	{
 		mrt_destroymlxdata(&mlxdata);
-		return (mrt_renderscene_errend(res, scene, screens));
+		return (mrt_drawimg_errend(res, scene, screens));
 	}
-	return (mrt_renderscene_mlx_loop(&mlxdata, scene, screens));
+	return (mrt_drawimg_mlx_loop(&mlxdata, scene, screens));
 }

@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/10 18:56:06 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/10 19:21:42 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,7 +216,7 @@ int				mrt_mallocscreens(t_scene *scene, t_list **screens);
 void			mrt_freescreens(t_list *screens);
 void			mrt_freescreen(void *screen_pt);
 
-t_list			*mrt_renderscene(t_scene *scene);
+t_list			*mrt_drawimg(t_scene *scene);
 t_list			*mrt_raytrace(t_scene *scene);
 int				mrt_raytrace_calc_raytrace(t_ray *ray, t_scene *scene);
 int				mrt_raytrace_calc_reflect(t_ray *ray, t_surface *surface, t_scene *scene);
@@ -225,12 +225,12 @@ int				mrt_color_apply_brightness(int color, double ratio);
 void			mrt_color_int_to_vec(int color, double *color_vec);
 int				mrt_color_vec_to_int(double *color_vec);
 
-int				mrt_renderscene_mlx(t_scene *scene, t_list *screens);
-int				mrt_renderscene_mlx_loop(t_mlxdata *mlxdata, t_scene *scene,
+int				mrt_drawimg_mlx(t_scene *scene, t_list *screens);
+int				mrt_drawimg_mlx_loop(t_mlxdata *mlxdata, t_scene *scene,
 					t_list *screens);
-int				mrt_renderscene_mlx_changeimgs(int key, t_mlxloopparam *param);
-int				mrt_renderscene_mlx_exit(t_mlxloopparam *param);
-int				mrt_renderscene_errend(int mrt_errno, t_scene *scene,
+int				mrt_drawimg_mlx_changeimgs(int key, t_mlxloopparam *param);
+int				mrt_drawimg_mlx_exit(t_mlxloopparam *param);
+int				mrt_drawimg_errend(int mrt_errno, t_scene *scene,
 					t_list *screens);
 
 t_surface		mrt_findintersection(t_ray *ray, t_scene *scene);
