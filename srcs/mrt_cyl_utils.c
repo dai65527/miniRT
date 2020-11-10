@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 21:04:41 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/05 18:47:07 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/10 11:20:46 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,9 @@ int			mrt_readfile_checkscene_cyl(t_list *cyls)
 		cyl = (t_cyl *)cyls->content;
 		if (mrt_readfile_checknormorien(cyl->orien))
 			return (ERR_FILEWRONG);
-		if (cyl->dia <= 0.0)
+		if (cyl->dia < 0.0)
 			return (ERR_FILEWRONG);
-		if (cyl->hei <= 0.0)
+		if (cyl->hei < 0.0)
 			return (ERR_FILEWRONG);
 		cyls = cyls->next;
 	}

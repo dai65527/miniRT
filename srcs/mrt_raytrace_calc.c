@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 12:00:04 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/09 13:13:43 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/10 13:29:19 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	calc_screen_unitvecdist(t_screen *screen)
 
 	if (mrt_isineps(screen->cam.orien[0]) && mrt_isineps(screen->cam.orien[1]))
 	{
-		screen->unitvec_x[0] = 1.0;
-		screen->unitvec_x[1] = 0.0;
+		screen->unitvec_x[0] = 0.0;
+		screen->unitvec_x[1] = 1.0;
 	}
 	else
 	{
@@ -83,11 +83,9 @@ int			mrt_raytrace_calc(t_scene *scene, t_screen *screen)
 		j = 0;
 		while (j < screen->rez.y)
 		{
-			// ft_printf("[%d,%d]: ", i, j);
 			calc_ray_to_screenpx(&ray, screen, i, j);
 			screen->px[i][j] = calc_screencolor(&ray, scene);
 			j++;
-			// ft_printf("\n");
 		}
 		i++;
 	}
