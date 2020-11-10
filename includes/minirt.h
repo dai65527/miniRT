@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/09 19:35:20 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/10 16:30:42 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,9 +217,8 @@ int				mrt_mallocscreens(t_scene *scene, t_list **screens);
 void			mrt_freescreens(t_list *screens);
 void			mrt_freescreen(void *screen_pt);
 
-int				mrt_renderscene(t_scene *scene);
-int				mrt_raytrace(t_scene *scene, t_list *screens);
-int				mrt_raytrace_calc(t_scene *scene, t_screen *screen);
+t_list			*mrt_renderscene(t_scene *scene);
+t_list			*mrt_raytrace(t_scene *scene);
 int				mrt_raytrace_calc_raytrace(t_ray *ray, t_scene *scene);
 int				mrt_raytrace_calc_reflect(t_ray *ray, t_surface *surface, t_scene *scene);
 

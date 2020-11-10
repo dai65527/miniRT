@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2020/11/09 19:35:50 by dnakano          ###   ########.fr        #
+#    Updated: 2020/11/10 16:29:35 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,14 +32,12 @@ SRCNAME			:=	minirt.c \
 					mrt_sphere_utils.c \
 					mrt_sqr_utils.c \
 					mrt_tgl_utils.c \
-					mrt_renderscene.c \
 					mrt_renderscene_mlx.c \
 					mrt_createmlximgs.c \
 					mrt_mlxdata_utils.c \
 					mrt_screen_utils.c \
 					mrt_mallocscreens.c \
 					mrt_raytrace.c \
-					mrt_raytrace_calc.c \
 					mrt_raytrace_calc_reflect.c \
 					mrt_color_utils.c \
 					mrt_findintersection.c \

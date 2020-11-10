@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:02 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/06 12:06:01 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/10 16:26:14 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int		main(int argc, char **argv)
 {
 	int		res;
 	t_scene	scene;
+	t_list	*screens;
 
 	if (argc != 2 && argc != 3)
 		return (mrt_errend(ERR_ARGC));
@@ -26,6 +27,8 @@ int		main(int argc, char **argv)
 		return (mrt_errend(ERR_ARGC));
 	if ((res = mrt_readfile(argv[1], &scene)) != NOERR)
 		return (mrt_errend(res));
-	mrt_printscene(scene);
-	return (mrt_renderscene(&scene));
+	mrt_printscene(scene);		// print xxx is to be deleted because it uses printf (vaargs)
+	if (!(screens = mrt_raytrace(&scene)))
+		return (mrt_errend(ERR_MALLOCFAIL));
+	return (mrt_renderscene_mlx(&scene, screens));
 }
