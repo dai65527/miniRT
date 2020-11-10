@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/10 16:30:42 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/10 18:50:34 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@
 ** configuration
 */
 # define WINDOWTITLE		"miniRT"
-# define MRT_EPS		1.0e-10
+# define MRT_EPS		1.0e-9
 # define SPECREFLEC_FACTOR	1.0
 # define SHININESS			20.0
 

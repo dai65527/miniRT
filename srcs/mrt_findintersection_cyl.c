@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 20:29:11 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/09 20:35:05 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/10 18:48:41 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static t_surface	cyl_solve(t_ray *ray, t_cyl *cyl)
 
 	surface.dist = -1.0;
 	cyl_calc_dist_abcd(ray, cyl, abcd);
-	if (abcd[3] < -MRT_EPS)
+	if (abcd[3] < MRT_EPS)
 		return (surface);
 	surface.color = cyl->color;
 	if ((surface.dist = (-abcd[1] - sqrt(abcd[3])) / (2.0 * abcd[0])) > MRT_EPS)
