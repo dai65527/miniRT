@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:02 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/10 19:03:06 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/10 19:09:26 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,7 @@ int		main(int argc, char **argv)
 	mrt_printscene(scene);		// print xxx is to be deleted because it uses printf (vaargs)
 	if (!(screens = mrt_raytrace(&scene)))
 		return (mrt_errend(ERR_MALLOCFAIL));
+	// if (flg_bmp)
+	// 	return (mrt_renderscene_bmp(&scene, screens));
 	return (mrt_renderscene_mlx(&scene, screens));
 }
