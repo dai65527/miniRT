@@ -23,7 +23,7 @@ int		main(int argc, char **argv)
 	if (argc != 2 && argc != 3)
 		return (mrt_errend(ERR_ARGC));
 	flg_bmp = 0;
-	if (argc == 3 && ft_strncmp(argv[2], "--save", ft_strlen(argv[2]) + 1))
+	if (argc == 3)
 	{
 		if (!ft_strncmp(argv[2], "--save", ft_strlen(argv[2]) + 1))
 			flg_bmp = 1;
@@ -35,7 +35,7 @@ int		main(int argc, char **argv)
 	mrt_printscene(scene);		// print xxx is to be deleted because it uses printf (vaargs)
 	if (!(screens = mrt_raytrace(&scene)))
 		return (mrt_errend(ERR_MALLOCFAIL));
-	// if (flg_bmp)
-	// 	return (mrt_drawimg_bmp(&scene, screens, argv[2]));
+	if (flg_bmp)
+		return (mrt_drawimg_bmp(&scene, screens, argv[1]));
 	return (mrt_drawimg_mlx(&scene, screens));
 }

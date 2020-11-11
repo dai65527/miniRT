@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/10 20:20:21 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 12:36:38 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,12 @@
 # define ERR_FILEOPEN	0x0102
 # define ERR_FILEREAD	0x0103
 # define ERR_FILEWRONG	0x0104
-# define ERR_MLXINIT	0x1001
-# define ERR_MLXIMG		0x1002
-# define ERR_MLXLOOP	0x1003
+# define ERR_MLXINIT	0x0201
+# define ERR_MLXIMG		0x0202
+# define ERR_MLXLOOP	0x0203
+# define ERR_BMPOPEN	0x0301
+# define ERR_FNTOOLONG	0x0302
+# define ERR_FILEWRITE	0x0303
 
 /*
 ** configuration
@@ -39,6 +42,13 @@
 # define MRT_EPS			1.0e-9
 # define SPECREFLEC_FACTOR	1.0
 # define SHININESS			20.0
+# define MRT_FILEPATHMAX	255
+
+/*
+** bmp file information
+*/
+# define BMP_FILEHEADERSIZE	14
+# define BMP_INFOHEADERSIZE	40
 
 typedef struct	s_scene
 {
@@ -230,6 +240,11 @@ int				mrt_drawimg_mlx_loop(t_mlxdata *mlxdata, t_scene *scene,
 					t_list *screens);
 int				mrt_drawimg_mlx_changeimgs(int key, t_mlxloopparam *param);
 int				mrt_drawimg_mlx_exit(t_mlxloopparam *param);
+
+int				mrt_drawimg_bmp(t_scene *scene, t_list *screens,
+					const char *rtfilename);
+int				mrt_drawimg_bmp_write(int fd, t_screen *screen);
+
 int				mrt_drawimg_errend(int mrt_errno, t_scene *scene,
 					t_list *screens);
 

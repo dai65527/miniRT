@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2020/11/10 20:13:42 by dnakano          ###   ########.fr        #
+#    Updated: 2020/11/11 12:33:28 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,8 @@ SRCNAME			:=	minirt.c \
 					mrt_drawimg_mlx.c \
 					mrt_createmlximgs.c \
 					mrt_mlxdata_utils.c \
+					mrt_drawimg_bmp.c \
+					mrt_drawimg_bmp_write.c \
 					mrt_screen_utils.c \
 					mrt_mallocscreens.c \
 					mrt_raytrace.c \

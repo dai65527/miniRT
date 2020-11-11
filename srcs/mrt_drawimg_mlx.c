@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 19:18:20 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/11 07:08:12 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 12:43:57 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int			mrt_drawimg_errend(int mrt_errno, t_scene *scene,
 {
 	mrt_freescene(scene);
 	mrt_freescreens(screens);
-	return (mrt_errno);
+	return (mrt_errend(mrt_errno));
 }
 
 int			mrt_drawimg_mlx_exit(t_mlxloopparam *param)
