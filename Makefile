@@ -87,17 +87,17 @@ HEADERS			:=	$(addprefix $(HEADERDIR)/,$(HEADERNAME))
 all:			$(NAME)
 
 $(NAME):		$(LIBFT) $(LIBS) $(HEADERS) $(OBJS)
-				cp $(LIBS)/libmlx.dylib $(OUTPUTDIR)
 				$(CC) $(CFLAGS) $(OBJS) \
 				-L$(LIBDIR) $(patsubst lib%,-l%,$(basename $(LIBNAME))) \
 				-o $(OUTPUTDIR)/$(NAME)
+				cp $(LIBDIR)/libmlx.dylib $(OUTPUTDIR)/
 
 .PHONY:			mac
 mac:			$(LIBFT) $(LIBS) $(HEADERS) $(OBJS)
 				$(CC) $(CFLAGS) $(OBJS) \
 				-L$(LIBDIR) $(patsubst lib%,-l%,$(basename $(LIBNAME))) \
 				-o $(OUTPUTDIR)/$(NAME)
-				cp $(LIBS)/libmlx.dylib $(OUTPUTDIR)
+				cp $(LIBDIR)/libmlx.dylib $(OUTPUTDIR)/
 
 $(LIBFT):
 				cd $(LIBFTDIR) && make $(LIBFTNAME)
