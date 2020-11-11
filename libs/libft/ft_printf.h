@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 12:27:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/10/29 12:32:15 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 07:50:51 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ typedef	struct		s_printf_flags
 
 typedef struct		s_float
 {
-	u_int8_t		sign;
+	uint8_t			sign;
 	int32_t			exp;
-	u_int64_t		frac;
+	uint64_t		frac;
 	int8_t			int_dec[FLT_INTSIZE];
 	int8_t			mts_dec[FLT_MTSSIZE];
 }					t_float;

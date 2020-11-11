@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 14:06:50 by dnakano           #+#    #+#             */
-/*   Updated: 2020/10/30 22:16:31 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 15:52:13 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 
 typedef struct	s_uint128
 {
-	u_int64_t	lsb;
-	u_int64_t	msb;
+	uint64_t	lsb;
+	uint64_t	msb;
 }				t_uint128;
 
 typedef union	u_float
@@ -30,9 +30,9 @@ typedef union	u_float
 
 typedef struct	s_float
 {
-	u_int8_t	sign;
+	uint8_t	sign;
 	int32_t		exp;
-	u_int64_t	frac;
+	uint64_t	frac;
 	int			exp_d;
 	t_uint128	frac_d;
 }				t_float;

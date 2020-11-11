@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/13 15:48:02 by dnakano           #+#    #+#             */
-/*   Updated: 2020/10/29 12:59:51 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 15:52:13 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void		ft_store_iflt_mts(t_float *iflt)
 {
 	int			i;
-	u_int64_t	mts_bin;
+	uint64_t	mts_bin;
 	int8_t		mts[FLT_MTSSIZE];
 
 	ft_bzero(iflt->mts_dec, sizeof(iflt->mts_dec));
@@ -45,7 +45,7 @@ static void		ft_store_iflt_int(t_float *iflt)
 {
 	int			i;
 	int			offset;
-	u_int64_t	itg_bin;
+	uint64_t	itg_bin;
 	int8_t		itg[FLT_INTSIZE];
 
 	ft_bzero(iflt->int_dec, sizeof(iflt->int_dec));
@@ -72,7 +72,7 @@ static void		ft_store_iflt_int(t_float *iflt)
 
 t_float			ft_store_iflt(double num)
 {
-	u_int64_t	mem;
+	uint64_t	mem;
 	t_float		iflt;
 
 	ft_memcpy(&mem, &num, sizeof(num));

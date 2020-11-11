@@ -3,14 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
+#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2020/11/11 12:33:28 by dnakano          ###   ########.fr        #
+#    Updated: 2020/11/11 08:11:43 by user42           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC				:=	gcc
+# CC				:=	clang
 CFLAGS			:=	-Wall -Werror -Wextra
 # CFLAGS			:=	-Wall -Werror -Wextra -fsanitize=address
 NAME			:=	miniRT

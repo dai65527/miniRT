@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mrt_createmlximgs.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 11:20:39 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/10 20:45:29 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 08:16:04 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int			mrt_createmlximgs(t_mlxdata *mlxdata, t_list *screens)
 	while (screens)
 	{
 		screen = (t_screen *)screens->content;
+		/// screen and list should be freed when error
 		if (mylx_new_image_addr(mlxdata->mlx, &mlxdata->imgs[i], mlxdata->x, mlxdata->y))
 			return (ERR_MLXIMG);
 		mrt_createmlximgs_createdata(&mlxdata->imgs[i], screen, mlxdata->x, mlxdata->y);
