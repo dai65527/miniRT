@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/11 21:00:35 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 23:12:30 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@
 */
 # define BMP_FILEHEADERSIZE	14
 # define BMP_INFOHEADERSIZE	40
+
+int				g_imgindex;
 
 typedef struct	s_scene
 {

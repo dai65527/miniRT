@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 19:18:20 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/11 21:26:55 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 23:13:02 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 static int	drawimg_mlx_exit(t_mlxloopparam *param)
 {
 	mrt_destroymlxdata(param->mlxdata);
+	free(param->mlxdata->mlx.ptr);
 	mrt_freescene(param->scene);
 	mrt_freescreens(param->screens);
 	exit(NOERR);
@@ -23,22 +24,27 @@ static int	drawimg_mlx_exit(t_mlxloopparam *param)
 
 static int	drawimg_mlx_changeimgs(int key, t_mlxloopparam *param)
 {
-	static int	index_img = 0;
-
 	if (key == KEY_K || key == KEY_RIGHT || key == KEY_UP)
-		index_img++;
+		g_imgindex++;
 	else if (key == KEY_J || key == KEY_LEFT || key == KEY_DOWN)
-		index_img--;
+		g_imgindex--;
 	else
 	{
 		if (key == KEY_ESC)
-			drawimg_mlx_exit(param);
+		{
+			mrt_destroymlxdata(param->mlxdata);
+			mylx_destroy_display(param->mlxdata->mlx);
+			free(param->mlxdata->mlx.ptr);
+			mrt_freescene(param->scene);
+			mrt_freescreens(param->screens);
+			exit(NOERR);
+		}
 		return (0);
 	}
-	if (index_img < 0)
-		index_img = param->mlxdata->num_imgs - 1;
+	if (g_imgindex < 0)
+		g_imgindex = param->mlxdata->num_imgs - 1;
 	mylx_put_image_to_window(param->mlxdata->mlx,
-		param->mlxdata->imgs[index_img % param->mlxdata->num_imgs], 0, 0);
+		param->mlxdata->imgs[g_imgindex % param->mlxdata->num_imgs], 0, 0);
 	return (0);
 }
 
@@ -57,14 +63,30 @@ static int	drawimg_mlx_loop(t_mlxdata *mlxdata, t_scene *scene,
 	return (ERR_MLXLOOP);
 }
 
+static int	drawimg_mlx_putimg(t_mlxloopparam *param)
+{
+	mylx_put_image_to_window(param->mlxdata->mlx,
+		param->mlxdata->imgs[g_imgindex % param->mlxdata->num_imgs], 0, 0);
+	return (0);
+}
+
 int			mrt_drawimg_mlx(t_scene *scene, t_list *screens)
 {
 	int				res;
 	t_mlxdata		mlxdata;
+	t_mlxloopparam	param;
 
 	if ((res = mrt_initmlxdata(&mlxdata, screens)) != NOERR)
 		return (mrt_drawimg_errend(res, scene, screens));
 	if ((res = mrt_createmlximgs(&mlxdata, screens)) != NOERR)
 		return (mrt_drawimg_errend(res, scene, screens));
+	param.mlxdata = &mlxdata;
+	param.scene = scene;
+	param.screens = screens;
+	mylx_key_hook(mlxdata.mlx, drawimg_mlx_changeimgs, &param);
+	mylx_closebtn_hook(mlxdata.mlx, drawimg_mlx_exit, &param);
+	mylx_expose_hook(mlxdata.mlx, drawimg_mlx_putimg, &param);
+	g_imgindex = 0;
+	mylx_loop(mlxdata.mlx);
 	return (drawimg_mlx_loop(&mlxdata, scene, screens));
 }

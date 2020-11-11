@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2020/11/11 20:58:44 by dnakano          ###   ########.fr        #
+#    Updated: 2020/11/11 23:10:58 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,6 +68,7 @@ SRCNAME			:=	minirt.c \
 					mylx_put_image_to_window.c \
 					mylx_get_screen_size.c \
 					mylx_key_hook.c \
+					mylx_expose_hook.c \
 					mylx_closebtn_hook.c \
 					mylx_loop.c \
 					mylx_destroy_image.c \

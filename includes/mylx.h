@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 16:32:23 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/11 19:37:55 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 23:04:58 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ int				mylx_pixel_put_to_image(t_img *img, int x, int y, int color);
 int				mylx_new_image_addr(t_mlx mlx, t_img *img, int x, int y);
 int				mylx_put_image_to_window(t_mlx mlx, t_img img, int x, int y);
 int				mylx_key_hook(t_mlx mlx, int (*funct_ptr)(), void *param);
+int				mylx_expose_hook(t_mlx mlx, int (*funct_ptr)(), void *param);
 int				mylx_closebtn_hook(t_mlx mlx, int (*funct_ptr)(), void *param);
 int				mylx_loop(t_mlx mlx);
 int				mylx_destroy_window(t_mlx mlx);
