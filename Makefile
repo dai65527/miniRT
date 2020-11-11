@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2020/11/11 19:05:24 by dnakano          ###   ########.fr        #
+#    Updated: 2020/11/11 19:32:10 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,8 @@ SRCNAME			:=	minirt.c \
 					mylx_closebtn_hook.c \
 					mylx_loop.c \
 					mylx_destroy_image.c \
-					mylx_destroy_window.c
+					mylx_destroy_window.c \
+					mylx_destroy_display.c
 SRCDIR			:=	./srcs
 SRCS			:=	$(addprefix $(SRCDIR)/,$(SRCNAME))
 OBJNAME			:=	$(SRCNAME:%.c=%.o)

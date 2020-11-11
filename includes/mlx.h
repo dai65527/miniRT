@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 07:10:32 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/11 19:21:33 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 19:33:38 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int				mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
 
 # ifdef LINUX
 
-int				mlx_destroy_dispaly(void *mlx_ptr);
+int				mlx_destroy_display(void *mlx_ptr);
 
 # endif
 
