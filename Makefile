@@ -6,14 +6,19 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2020/11/11 17:11:47 by dnakano          ###   ########.fr        #
+#    Updated: 2020/11/11 19:05:24 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# WHEN USE ON MACOS CHANGE "LINUX" TO "MACOS" (OR SIMPLY COMMENTOUT)
+OS				:=	LINUX
+
 CC				:=	gcc
-# CC				:=	clang
-CFLAGS			:=	-Wall -Werror -Wextra
-# CFLAGS			:=	-Wall -Werror -Wextra -fsanitize=address
+ifeq ($(OS),LINUX)
+	CFLAGS		:=	-Wall -Werror -Wextra -D $(OS) #-fsanitize=address
+else
+	CFLAGS		:=	-Wall -Werror -Wextra #-fsanitize=address
+endif
 NAME			:=	miniRT
 OUTPUTDIR		:=	.
 OUTPUTS			:=	$(addprefix $(OUTPUTDIR)/,$(NAME))
@@ -75,8 +80,13 @@ LIBDIR			:=	./libs
 LIBFTDIR		:=	$(LIBDIR)/libft
 LIBFTNAME		:=	libft.a
 LIBFT			:=	$(LIBFTDIR)/$(LIBFTNAME)
-LIBNAME			:=	$(LIBFTNAME) libmlx.dylib
-LIBS			:=	$(addprefix $(LIBDIR)/,$(LIBNAME))
+ifeq ($(OS),LINUX)
+	LIBNAME		:=	$(LIBFTNAME) libmlx_Linux.a
+	LIBS		:=	$(addprefix $(LIBDIR)/,$(LIBNAME))
+else
+	LIBNAME		:=	$(LIBFTNAME) libmlx.dylib
+	LIBS		:=	$(addprefix $(LIBDIR)/,$(LIBNAME))
+endif
 HEADERNAME		:=	minirt.h libft.h mlx.h
 HEADERDIR		:=	./includes
 HEADERS			:=	$(addprefix $(HEADERDIR)/,$(HEADERNAME))
@@ -86,22 +96,26 @@ HEADERS			:=	$(addprefix $(HEADERDIR)/,$(HEADERNAME))
 .PHONY:			all
 all:			$(NAME)
 
+ifeq ($(OS),LINUX)
+$(NAME):		$(LIBFT) $(LIBS) $(HEADERS) $(OBJS)
+				$(CC) $(CFLAGS) $(OBJS) \
+				-L$(LIBDIR) $(patsubst lib%,-l%,$(basename $(LIBNAME))) \
+				-lXext -lX11 -lm\
+				-o $(OUTPUTDIR)/$(NAME)
+else
 $(NAME):		$(LIBFT) $(LIBS) $(HEADERS) $(OBJS)
 				$(CC) $(CFLAGS) $(OBJS) \
 				-L$(LIBDIR) $(patsubst lib%,-l%,$(basename $(LIBNAME))) \
 				-o $(OUTPUTDIR)/$(NAME)
 				cp $(LIBDIR)/libmlx.dylib $(OUTPUTDIR)/
-
-.PHONY:			mac
-mac:			$(LIBFT) $(LIBS) $(HEADERS) $(OBJS)
-				$(CC) $(CFLAGS) $(OBJS) \
-				-L$(LIBDIR) $(patsubst lib%,-l%,$(basename $(LIBNAME))) \
-				-o $(OUTPUTDIR)/$(NAME)
-				cp $(LIBDIR)/libmlx.dylib $(OUTPUTDIR)/
+endif
 
 $(LIBFT):
 				cd $(LIBFTDIR) && make $(LIBFTNAME)
 				cp $(LIBFT) $(LIBDIR)
+
+.PHONY:			libft
+libft:			$(LIBFT)
 
 .c.o:
 				$(CC) $(CFLAGS) -I$(HEADERDIR) \
