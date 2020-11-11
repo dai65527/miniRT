@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 07:15:48 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/11 12:55:22 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 17:00:34 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ int			mrt_drawimg_bmp(t_scene *scene, t_list *screens,
 	{
 		if ((res = bmp_getfilename(bmpfilename, rtfilename, index)) != NOERR)
 			return (mrt_drawimg_errend(res, scene, screens_head));
-		if ((fd = open(bmpfilename, O_WRONLY | O_CREAT, S_IREAD | S_IWRITE)) < 0)
+		fd = open(bmpfilename, O_WRONLY | O_CREAT, S_IRWXU | S_IRWXG | S_IRWXO);
+		if (fd < 0)
 			return (mrt_drawimg_errend(ERR_BMPOPEN, scene, screens_head));
 		res = mrt_drawimg_bmp_write(fd, screens->content);
 		close(fd);

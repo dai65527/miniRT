@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: user42 <user42@student.42.fr>              +#+  +:+       +#+         #
+#    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2020/11/11 08:11:43 by user42           ###   ########.fr        #
+#    Updated: 2020/11/11 17:11:47 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,9 +87,17 @@ HEADERS			:=	$(addprefix $(HEADERDIR)/,$(HEADERNAME))
 all:			$(NAME)
 
 $(NAME):		$(LIBFT) $(LIBS) $(HEADERS) $(OBJS)
+				cp $(LIBS)/libmlx.dylib $(OUTPUTDIR)
 				$(CC) $(CFLAGS) $(OBJS) \
 				-L$(LIBDIR) $(patsubst lib%,-l%,$(basename $(LIBNAME))) \
 				-o $(OUTPUTDIR)/$(NAME)
+
+.PHONY:			mac
+mac:			$(LIBFT) $(LIBS) $(HEADERS) $(OBJS)
+				$(CC) $(CFLAGS) $(OBJS) \
+				-L$(LIBDIR) $(patsubst lib%,-l%,$(basename $(LIBNAME))) \
+				-o $(OUTPUTDIR)/$(NAME)
+				cp $(LIBS)/libmlx.dylib $(OUTPUTDIR)
 
 $(LIBFT):
 				cd $(LIBFTDIR) && make $(LIBFTNAME)
@@ -107,7 +115,8 @@ clean:
 .PHONY:			fclean
 fclean:			clean
 				cd $(LIBFTDIR)/ && make fclean
-				rm -f $(OUTPUTS)
+				rm -f $(OUTPUTDIR)/libmlx.dylib
+				rm -f $(OUTPUTDIR)/$(OUTPUTS)
 
 .PHONY:			re
 re:				fclean all
