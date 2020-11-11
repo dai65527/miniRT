@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 07:10:32 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/04 17:09:46 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 19:21:33 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 **	minilibx_mms_20200219. No new function or macros are defined in this header
 **	compared to original mlx.h. Please refer to original mlx.h for description
 **	or comments for each functions.
-**	
+**
 **	dnakano
 */
 
@@ -74,5 +74,11 @@ int				mlx_do_sync(void *mlx_ptr);
 int				mlx_sync(int cmd, void *param);
 
 int				mlx_get_screen_size(void *mlx_ptr, int *sizex, int *sizey);
+
+# ifdef LINUX
+
+int				mlx_destroy_dispaly(void *mlx_ptr);
+
+# endif
 
 #endif

@@ -6,23 +6,30 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 16:32:23 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/10 20:08:54 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 19:22:19 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MYLX_H
 # define MYLX_H
 
-# define KEY_R		15
-# define KEY_G		5
-# define KEY_B		11
-# define KEY_J		38
-# define KEY_K		40
-# define KEY_LEFT	123
-# define KEY_RIGHT	124
-# define KEY_DOWN	125
-# define KEY_UP		126
-# define KEY_ESC	53
+# ifdef LINUX
+#  define KEY_J		106
+#  define KEY_K		107
+#  define KEY_LEFT	65361
+#  define KEY_RIGHT	65363
+#  define KEY_DOWN	65364
+#  define KEY_UP	65362
+#  define KEY_ESC	65307
+# else
+#  define KEY_J		38
+#  define KEY_K		40
+#  define KEY_LEFT	123
+#  define KEY_RIGHT	124
+#  define KEY_DOWN	125
+#  define KEY_UP	126
+#  define KEY_ESC	53
+# endif
 
 typedef struct	s_mlx
 {
@@ -53,5 +60,6 @@ int				mylx_closebtn_hook(t_mlx mlx, int (*funct_ptr)(), void *param);
 int				mylx_loop(t_mlx mlx);
 int				mylx_destroy_window(t_mlx mlx);
 int				mylx_destroy_image(t_mlx mlx, t_img img);
+int				mlx_destroy_display(void *mlx_ptr);
 
 #endif
