@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 19:18:20 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/12 07:58:06 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 08:39:53 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 static int	drawimg_mlx_exit(t_mlxloopparam *param)
 {
 	mrt_destroymlxdata(param->mlxdata);
-	mylx_destroy_display(param->mlxdata->mlx);
 	free(param->mlxdata->mlx.ptr);
 	mrt_freescene(param->scene);
 	mrt_freescreens(param->screens);
