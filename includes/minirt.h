@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/11 23:12:30 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 07:50:47 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,7 +224,7 @@ void			mrt_printsqr(void *sqr_pt);
 void			mrt_printcyl(void *cyl_pt);
 void			mrt_printtgl(void *tgl_pt);
 
-int				mrt_mallocscreens(t_scene *scene, t_list **screens);
+int				mrt_mallocscreens(t_scene scene, t_list **screens);
 void			mrt_freescreens(t_list *screens);
 void			mrt_freescreen(void *screen_pt);
 

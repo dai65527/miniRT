@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 11:37:08 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/10 16:31:08 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 07:50:36 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ t_list		*mrt_raytrace(t_scene *scene)
 	t_list	*screens;
 	t_list	*screens_head;
 
-	if (mrt_mallocscreens(scene, &screens) != NOERR)
+	if (mrt_mallocscreens(*scene, &screens) != NOERR)
 	{
 		mrt_freescreens(screens);
 		mrt_freescene(scene);

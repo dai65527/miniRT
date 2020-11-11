@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/04 11:59:29 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/06 12:30:09 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 07:52:49 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static int	mallocscreens_mallocpx(t_screen *screen)
 	return (NOERR);
 }
 
-int			mrt_mallocscreens(t_scene *scene, t_list **screens)
+int			mrt_mallocscreens(t_scene scene, t_list **screens)
 {
 	int			i;
 	int			res;
@@ -62,15 +62,15 @@ int			mrt_mallocscreens(t_scene *scene, t_list **screens)
 	t_list		*newlst;
 
 	*screens = NULL;
-	n_screens = ft_lstsize(scene->cams);
+	n_screens = ft_lstsize(scene.cams);
 	i = 0;
 	while (i < n_screens)
 	{
 		if (!(screen = (t_screen *)malloc(sizeof(t_screen))))
 			return (mallocscreens_errend(ERR_MALLOCFAIL, *screens));
-		screen->rez = *((t_rez *)(scene->rezs->content));
-		screen->cam = *((t_cam *)(scene->cams->content));
-		scene->cams = scene->cams->next;
+		screen->rez = *((t_rez *)(scene.rezs->content));
+		screen->cam = *((t_cam *)(scene.cams->content));
+		scene.cams = scene.cams->next;
 		if ((res = mallocscreens_mallocpx(screen)) != NOERR)
 			return (mallocscreens_errend(res, *screens));
 		if (!(newlst = ft_lstnew(screen)))
