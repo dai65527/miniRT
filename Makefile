@@ -6,7 +6,7 @@
 #    By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/08/21 08:47:29 by dnakano           #+#    #+#              #
-#    Updated: 2020/11/11 23:10:58 by dnakano          ###   ########.fr        #
+#    Updated: 2020/11/12 08:55:42 by dnakano          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,7 +57,8 @@ SRCNAME			:=	minirt.c \
 					mrt_findintersection_tgl.c \
 					mrt_findintersection_utils.c \
 					mrt_errend.c \
-					math_3dvec_utils.c \
+					math_vec3_prods.c \
+					math_vec3_utils.c \
 					math_abs.c \
 					mylx_init.c \
 					mylx_new_window.c \

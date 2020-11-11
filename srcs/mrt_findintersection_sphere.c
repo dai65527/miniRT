@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 20:29:11 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/09 17:43:35 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 08:49:09 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ static double		sphere_calc_dist(t_ray *ray, t_sphere *sphere, int *flg_inside)
 	double		vec[3];
 
 	*flg_inside = 0;
-	math_3dvec_minus(ray->orig, sphere->pos, vec);
-	b = 2.0 * math_3dvec_innerprod(ray->dir, vec);
-	c = math_3dvec_norm(vec);
+	math_vec3_minus(ray->orig, sphere->pos, vec);
+	b = 2.0 * math_vec3_innerprod(ray->dir, vec);
+	c = math_vec3_norm(vec);
 	c = c * c - sphere->dia * sphere->dia / 4.0;
 	d = b * b - 4.0 * c;
 	if (d < -MRT_EPS)
@@ -46,12 +46,12 @@ static t_surface	sphere_solve(t_ray *ray, t_sphere *sphere)
 
 	if ((surface.dist = sphere_calc_dist(ray, sphere, &flg_inside)) <= MRT_EPS)
 		return (surface);
-	math_3dvec_applylen(ray->dir, surface.dist, vec);
-	math_3dvec_plus(ray->orig, vec, surface.pos);
-	math_3dvec_minus(surface.pos, sphere->pos, surface.normvec);
-	math_3dvec_normalize(surface.normvec, surface.normvec);
+	math_vec3_applylen(ray->dir, surface.dist, vec);
+	math_vec3_plus(ray->orig, vec, surface.pos);
+	math_vec3_minus(surface.pos, sphere->pos, surface.normvec);
+	math_vec3_normalize(surface.normvec, surface.normvec);
 	if (flg_inside)
-		math_3dvec_applylen(surface.normvec, -1.0, surface.normvec);
+		math_vec3_applylen(surface.normvec, -1.0, surface.normvec);
 	surface.color = sphere->color;
 	return (surface);
 }

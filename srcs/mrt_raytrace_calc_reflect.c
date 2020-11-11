@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 17:46:29 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/09 13:13:14 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 08:49:09 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ static void	calc_reflect_amblight(t_surface *surface, t_amblight *amblight, doub
 	double	reflect_ratio[3];
 
 	mrt_color_int_to_vec(surface->color, reflect_ratio);
-	math_3dvec_applylen(reflect_ratio, 1.0 / 255.0, reflect_ratio);
+	math_vec3_applylen(reflect_ratio, 1.0 / 255.0, reflect_ratio);
 	mrt_color_int_to_vec(amblight->color, color_vec);
-	math_3dvec_applylen(color_vec, amblight->ratio, color_vec);
+	math_vec3_applylen(color_vec, amblight->ratio, color_vec);
 	calc_reflect_applyratio(color_vec, reflect_ratio, color_vec);
 }
 
@@ -39,10 +39,10 @@ static void	calc_reflect_amblight(t_surface *surface, t_amblight *amblight, doub
 	t_surface	obstsurface;
 
 	ray_s2l.orig = surface->pos;
-	math_3dvec_minus(light->pos, surface->pos, vec_s2l);
-	math_3dvec_normalize(vec_s2l, ray_s2l.dir);
+	math_vec3_minus(light->pos, surface->pos, vec_s2l);
+	math_vec3_normalize(vec_s2l, ray_s2l.dir);
 	obstsurface = mrt_findintersection(&ray_s2l, scene);
-	return (obstsurface.dist > MRT_EPS && obstsurface.dist < math_3dvec_norm(vec_s2l));
+	return (obstsurface.dist > MRT_EPS && obstsurface.dist < math_vec3_norm(vec_s2l));
 }
 
 static void	calc_reflect_light(t_ray *ray, t_surface *surface, t_light *light, double *color_vec)
@@ -53,24 +53,24 @@ static void	calc_reflect_light(t_ray *ray, t_surface *surface, t_light *light, d
 	double	lightcolor_vec[3];
 	double	reflect_ratio[3];
 
-	math_3dvec_minus(light->pos, surface->pos, vec_s2l);
-	math_3dvec_normalize(vec_s2l, vec_s2l);
-	if ((innnerprod_tmp = math_3dvec_innerprod(surface->normvec, vec_s2l)) < MRT_EPS)
+	math_vec3_minus(light->pos, surface->pos, vec_s2l);
+	math_vec3_normalize(vec_s2l, vec_s2l);
+	if ((innnerprod_tmp = math_vec3_innerprod(surface->normvec, vec_s2l)) < MRT_EPS)
 	{
 		ft_bzero(color_vec, sizeof(double) * 3);
 		return ;
 	}
 	mrt_color_int_to_vec(surface->color, reflect_ratio);
-	math_3dvec_applylen(reflect_ratio, 1.0 / 255.0, reflect_ratio);
+	math_vec3_applylen(reflect_ratio, 1.0 / 255.0, reflect_ratio);
 	mrt_color_int_to_vec(light->color, lightcolor_vec);
-	math_3dvec_applylen(lightcolor_vec, innnerprod_tmp * light->ratio, color_vec);
+	math_vec3_applylen(lightcolor_vec, innnerprod_tmp * light->ratio, color_vec);
 	calc_reflect_applyratio(color_vec, reflect_ratio, color_vec);
-	math_3dvec_applylen(surface->normvec, 2.0 * innnerprod_tmp, vec_tmp);
-	math_3dvec_minus(vec_tmp, vec_s2l, vec_tmp);
-	if ((innnerprod_tmp = -math_3dvec_innerprod(ray->dir, vec_tmp)) < 0.0)
+	math_vec3_applylen(surface->normvec, 2.0 * innnerprod_tmp, vec_tmp);
+	math_vec3_minus(vec_tmp, vec_s2l, vec_tmp);
+	if ((innnerprod_tmp = -math_vec3_innerprod(ray->dir, vec_tmp)) < 0.0)
 		return ;
-	math_3dvec_applylen(lightcolor_vec, SPECREFLEC_FACTOR * pow(innnerprod_tmp, SHININESS) * light->ratio, vec_tmp);
-	math_3dvec_plus(color_vec, vec_tmp, color_vec);
+	math_vec3_applylen(lightcolor_vec, SPECREFLEC_FACTOR * pow(innnerprod_tmp, SHININESS) * light->ratio, vec_tmp);
+	math_vec3_plus(color_vec, vec_tmp, color_vec);
 }
 
 int			mrt_raytrace_calc_reflect(t_ray *ray, t_surface *surface, t_scene *scene)
@@ -82,13 +82,13 @@ int			mrt_raytrace_calc_reflect(t_ray *ray, t_surface *surface, t_scene *scene)
 	lights = scene->lights;
 	ft_bzero(color_vec, sizeof(color_vec));
 	calc_reflect_amblight(surface, scene->amblights->content, color_vec_tmp);
-	math_3dvec_plus(color_vec, color_vec_tmp, color_vec);
+	math_vec3_plus(color_vec, color_vec_tmp, color_vec);
 	while (lights)
 	{
 		if (!has_obstruction(surface, lights->content, scene))
 		{
 			calc_reflect_light(ray, surface, lights->content, color_vec_tmp);
-			math_3dvec_plus(color_vec, color_vec_tmp, color_vec);
+			math_vec3_plus(color_vec, color_vec_tmp, color_vec);
 		}
 		lights = lights->next;
 	}

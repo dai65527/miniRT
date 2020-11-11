@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 11:37:08 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/12 07:50:36 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 08:49:09 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	calc_screen_unitvecdist(t_screen *screen)
 		screen->unitvec_x[1] = screen->cam.orien[0] / tmp;
 	}
 	screen->unitvec_x[2] = 0.0;
-	math_3dvec_outerprod(screen->unitvec_x, screen->cam.orien,
+	math_vec3_outerprod(screen->unitvec_x, screen->cam.orien,
 							screen->unitvec_y);
 	screen->dist = screen->rez.x / tan(screen->cam.fov * M_PI / 180.0 / 2.0);
 }
@@ -40,14 +40,14 @@ static void	calc_ray_to_screenpx(t_ray *ray, t_screen *screen, int i, int j)
 {
 	double	vec[3];
 
-	math_3dvec_applylen(screen->cam.orien, screen->dist, vec);
+	math_vec3_applylen(screen->cam.orien, screen->dist, vec);
 	vec[0] -= ((double)i - (double)screen->rez.x / 2.0) * screen->unitvec_x[0];
 	vec[1] -= ((double)i - (double)screen->rez.x / 2.0) * screen->unitvec_x[1];
 	vec[2] -= ((double)i - (double)screen->rez.x / 2.0) * screen->unitvec_x[2];
 	vec[0] += ((double)j - (double)screen->rez.y / 2.0) * screen->unitvec_y[0];
 	vec[1] += ((double)j - (double)screen->rez.y / 2.0) * screen->unitvec_y[1];
 	vec[2] += ((double)j - (double)screen->rez.y / 2.0) * screen->unitvec_y[2];
-	math_3dvec_normalize(vec, ray->dir);
+	math_vec3_normalize(vec, ray->dir);
 }
 
 static int	calc_screencolor(t_ray *ray, t_scene *scene)

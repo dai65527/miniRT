@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 11:52:32 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/09 13:13:43 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 08:49:09 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,17 @@ t_surface	mrt_findintersection_plane_solve(t_ray *ray, t_plane *plane)
 	double		vec_tmp[3];
 
 	surface.dist = -1.0;
-	innerprod_tmp = math_3dvec_innerprod(ray->dir, plane->orien);	
+	innerprod_tmp = math_vec3_innerprod(ray->dir, plane->orien);	
 	if (mrt_isineps(innerprod_tmp))
 		return (surface);
 	else if (innerprod_tmp < 0.0)
-		math_3dvec_applylen(plane->orien, 1.0, surface.normvec);
+		math_vec3_applylen(plane->orien, 1.0, surface.normvec);
 	else
-		math_3dvec_applylen(plane->orien, -1.0, surface.normvec);
-	math_3dvec_minus(plane->pos, ray->orig, vec_tmp);
-	surface.dist = math_3dvec_innerprod(vec_tmp, plane->orien) / innerprod_tmp;
-	math_3dvec_applylen(ray->dir, surface.dist, vec_tmp);
-	math_3dvec_plus(ray->orig, vec_tmp, surface.pos);
+		math_vec3_applylen(plane->orien, -1.0, surface.normvec);
+	math_vec3_minus(plane->pos, ray->orig, vec_tmp);
+	surface.dist = math_vec3_innerprod(vec_tmp, plane->orien) / innerprod_tmp;
+	math_vec3_applylen(ray->dir, surface.dist, vec_tmp);
+	math_vec3_plus(ray->orig, vec_tmp, surface.pos);
 	surface.color = plane->color;
 	return (surface);
 }
