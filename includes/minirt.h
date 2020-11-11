@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/11 12:36:38 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 21:00:35 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -238,8 +238,6 @@ int				mrt_color_vec_to_int(double *color_vec);
 int				mrt_drawimg_mlx(t_scene *scene, t_list *screens);
 int				mrt_drawimg_mlx_loop(t_mlxdata *mlxdata, t_scene *scene,
 					t_list *screens);
-int				mrt_drawimg_mlx_changeimgs(int key, t_mlxloopparam *param);
-int				mrt_drawimg_mlx_exit(t_mlxloopparam *param);
 
 int				mrt_drawimg_bmp(t_scene *scene, t_list *screens,
 					const char *rtfilename);
