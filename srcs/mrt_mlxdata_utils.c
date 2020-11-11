@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 10:32:00 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/10 21:05:48 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 16:39:16 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void		mrt_destroymlxdata(t_mlxdata *mlxdata)
 		mylx_destroy_image(mlxdata->mlx, mlxdata->imgs[i]);
 		i++;
 	}
+	free(mlxdata->imgs);
 	mylx_destroy_window(mlxdata->mlx);
 	// free(mlxdata->mlx.ptr);
 }

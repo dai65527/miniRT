@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/10 19:18:20 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/11 12:43:57 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/11 16:36:46 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,6 @@ int			mrt_drawimg_mlx(t_scene *scene, t_list *screens)
 	if ((res = mrt_initmlxdata(&mlxdata, screens)) != NOERR)
 		return (mrt_drawimg_errend(res, scene, screens));
 	if ((res = mrt_createmlximgs(&mlxdata, screens)) != NOERR)
-	{
-		mrt_destroymlxdata(&mlxdata);
 		return (mrt_drawimg_errend(res, scene, screens));
-	}
 	return (mrt_drawimg_mlx_loop(&mlxdata, scene, screens));
 }
