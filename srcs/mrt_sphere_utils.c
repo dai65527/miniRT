@@ -6,25 +6,13 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 21:04:41 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/10 11:17:13 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 09:02:36 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 #include "minirt.h"
-
-void		mrt_printsphere(void *sphere_pt)
-{
-	t_sphere	*sphere;
-
-	sphere = (t_sphere *)sphere_pt;
-	ft_printf("center: [%g, %g, %g]\n",
-		sphere->pos[0], sphere->pos[1], sphere->pos[2]);
-	ft_printf("diameter: %g\n", sphere->dia);
-	ft_printf("color: %d\n", sphere->color);
-	ft_printf("\n");
-}
 
 int			mrt_readfile_storescene_sphere(const char *line, t_scene *scene)
 {

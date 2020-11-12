@@ -6,23 +6,13 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 21:04:41 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/05 19:28:59 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 09:02:51 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 #include "minirt.h"
-
-void		mrt_printrez(void *rez_pt)
-{
-	t_rez	*rez;
-
-	rez = (t_rez *)rez_pt;
-	ft_printf("x: %d\n", rez->x);
-	ft_printf("y: %d\n", rez->y);
-	ft_printf("\n");
-}
 
 int			mrt_readfile_storescene_rez(const char *line, t_scene *scene)
 {

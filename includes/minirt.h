@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/12 07:50:47 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 09:03:47 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,17 +212,6 @@ int				mrt_readfile_isrt(const char *path);
 int				mrt_readfile_checkendl(const char *line);
 int				mrt_readfile_errend(int err, t_scene *scene, char *line,
 					int fd);
-
-void			mrt_printscene(t_scene scene);
-void			mrt_printrez(void *rez_pt);
-void			mrt_printamblight(void *amblight_pt);
-void			mrt_printcam(void *cam_pt);
-void			mrt_printlight(void *light_pt);
-void			mrt_printsphere(void *sphere_pt);
-void			mrt_printplane(void *plane_pt);
-void			mrt_printsqr(void *sqr_pt);
-void			mrt_printcyl(void *cyl_pt);
-void			mrt_printtgl(void *tgl_pt);
 
 int				mrt_mallocscreens(t_scene scene, t_list **screens);
 void			mrt_freescreens(t_list *screens);

@@ -32,7 +32,6 @@ int		main(int argc, char **argv)
 	}
 	if ((res = mrt_readfile(argv[1], &scene)) != NOERR)
 		return (mrt_errend(res));
-	mrt_printscene(scene);		// print xxx is to be deleted because it uses printf (vaargs)
 	if (!(screens = mrt_raytrace(&scene)))
 		return (mrt_errend(ERR_MALLOCFAIL));
 	if (flg_bmp)

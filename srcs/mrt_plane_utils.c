@@ -6,25 +6,12 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 21:04:41 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/06 12:25:42 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 09:02:44 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "minirt.h"
-
-void		mrt_printplane(void *plane_pt)
-{
-	t_plane	*plane;
-
-	plane = (t_plane *)plane_pt;
-	ft_printf("coordinates: [%g, %g, %g]\n",
-		plane->pos[0], plane->pos[1], plane->pos[2]);
-	ft_printf("orientation: [%g, %g, %g]\n",
-		plane->orien[0], plane->orien[1], plane->orien[2]);
-	ft_printf("color: %d\n", plane->color);
-	ft_printf("\n");
-}
 
 int			mrt_readfile_storescene_plane(const char *line, t_scene *scene)
 {

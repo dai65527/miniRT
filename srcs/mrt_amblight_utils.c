@@ -6,23 +6,13 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/02 19:18:36 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/06 22:00:46 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 09:01:13 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 #include "minirt.h"
-
-void		mrt_printamblight(void *amblight_pt)
-{
-	t_amblight	*amblight;
-
-	amblight = (t_amblight *)amblight_pt;
-	ft_printf("Ratio: %g\n", amblight->ratio);
-	ft_printf("Color: %d\n", amblight->color);
-	ft_printf("\n");
-}
 
 int			mrt_readfile_storescene_amblight(const char *line, t_scene *scene)
 {

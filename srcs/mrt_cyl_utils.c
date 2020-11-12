@@ -6,27 +6,13 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 21:04:41 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/10 11:20:46 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 09:01:35 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 #include "minirt.h"
-
-void		mrt_printcyl(void *cyl_pt)
-{
-	t_cyl	*cyl;
-
-	cyl = (t_cyl *)cyl_pt;
-	ft_printf("center: [%g, %g, %g]\n", cyl->pos[0], cyl->pos[1], cyl->pos[2]);
-	ft_printf("orientation: [%g, %g, %g]\n",
-		cyl->orien[0], cyl->orien[1], cyl->orien[2]);
-	ft_printf("diameter: %g\n", cyl->dia);
-	ft_printf("height: %g\n", cyl->hei);
-	ft_printf("color: %d\n", cyl->color);
-	ft_printf("\n");
-}
 
 static int	free_and_return(t_cyl *cyl, int mrt_errno)
 {

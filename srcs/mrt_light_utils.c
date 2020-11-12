@@ -6,25 +6,13 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 21:04:41 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/05 18:45:01 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 09:02:10 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 #include "minirt.h"
-
-void		mrt_printlight(void *light_pt)
-{
-	t_light	*light;
-
-	light = (t_light *)light_pt;
-	ft_printf("light pos: [%g, %g, %g]\n",
-		light->pos[0], light->pos[1], light->pos[2]);
-	ft_printf("brightness ratio: %g\n", light->ratio);
-	ft_printf("color: %d\n", light->color);
-	ft_printf("\n");
-}
 
 int			mrt_readfile_storescene_light(const char *line, t_scene *scene)
 {
