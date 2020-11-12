@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 11:20:39 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/11 18:15:50 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 12:05:00 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,11 @@ int			mrt_createmlximgs(t_mlxdata *mlxdata, t_list *screens)
 	while (screens)
 	{
 		screen = (t_screen *)screens->content;
-		if (mylx_new_image_addr(mlxdata->mlx, &mlxdata->imgs[i], mlxdata->x, mlxdata->y))
+		if (mylx_new_image_addr(mlxdata->mlx, &mlxdata->imgs[i],
+			mlxdata->x, mlxdata->y))
 			return (createmlximgs_errend(ERR_MLXIMG, mlxdata, i));
-		createmlximgs_createdata(&mlxdata->imgs[i], screen, mlxdata->x, mlxdata->y);
+		createmlximgs_createdata(&mlxdata->imgs[i], screen,
+									mlxdata->x, mlxdata->y);
 		screens = screens->next;
 		i++;
 	}

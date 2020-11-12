@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/11 09:06:18 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/11 12:39:30 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 12:01:22 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 /*
 **	WRITE FILEHEADER (14bytes in total)
-** 
+**
 ** filetype	(2bytes) =	"BM" (unique for bmp file)
 ** filesize	(2bytes) =	imgsize (whole size of bmpfile in byte)
 ** reserved	(4bytes) =	0 (not used)
@@ -43,7 +43,7 @@ static int	bmp_write_fileheader(int fd, uint32_t imgsize)
 
 /*
 **	WRITE INFOHEADER (40bytes in total)
-** 
+**
 ** headersize	(4bytes) =	BMP_INFOHEADERSIZE (=40, windows bitmapinfoheader)
 ** imagewidth	(4bytes) =	imgwidth
 ** imageheight	(4bytes) =	imgheight

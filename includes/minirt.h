@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/12 09:17:44 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 12:22:03 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@ const char		*mrt_readfile_readvec(const char *line, double *vec);
 const char		*mrt_readfile_readcolor(const char *line, int *color);
 
 int				mrt_readfile_checkscene(t_scene *scene);
-int				mrt_readfile_checkratio(double ratio);	
+int				mrt_readfile_checkratio(double ratio);
 int				mrt_readfile_checknormorien(double *vec);
 int				mrt_readfile_checkscene_rez(t_list *rezs);
 int				mrt_readfile_checkscene_amblight(t_list *amblights);
@@ -221,7 +221,8 @@ void			mrt_freescreen(void *screen_pt);
 t_list			*mrt_drawimg(t_scene *scene);
 t_list			*mrt_raytrace(t_scene *scene);
 int				mrt_raytrace_calc_raytrace(t_ray *ray, t_scene *scene);
-int				mrt_raytrace_calc_reflect(t_ray *ray, t_surface *surface, t_scene *scene);
+int				mrt_raytrace_calc_reflect(t_ray *ray, t_surface *surface,
+					t_scene *scene);
 
 int				mrt_color_apply_brightness(int color, double ratio);
 void			mrt_color_int_to_vec(int color, double *color_vec);
@@ -248,7 +249,8 @@ t_surface		mrt_findintersection_tgl(t_ray *ray, t_list *tgls);
 
 int				mrt_isineps(double var);
 int				mrt_surface_isnearer(t_surface old, t_surface new);
-void			mrt_surface_calcpos_from_dirdist(t_surface *surface, t_ray *ray);
+void			mrt_surface_calcpos_from_dirdist(t_surface *surface,
+					t_ray *ray);
 
 int				mrt_createmlximgs(t_mlxdata *mlxdata, t_list *screens);
 

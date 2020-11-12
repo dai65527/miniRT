@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/29 14:06:50 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/11 15:52:13 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 12:31:02 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef union	u_float
 
 typedef struct	s_float
 {
-	uint8_t	sign;
+	uint8_t		sign;
 	int32_t		exp;
 	uint64_t	frac;
 	int			exp_d;

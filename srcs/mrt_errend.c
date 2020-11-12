@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:40:48 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/12 09:41:26 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 12:00:32 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	errend_printinfo_0(int mrt_errno)
 		ft_putstr_fd("Failed in memory allocation (", FD_STDERR);
 }
 
-static void errend_printinfo_1(int mrt_errno)
+static void	errend_printinfo_1(int mrt_errno)
 {
 	if (mrt_errno == ERR_FILETYPE)
 		ft_putstr_fd("File name invalid. Need \".rt\" extaition (", FD_STDERR);
@@ -55,7 +55,7 @@ static void	errend_printinfo_3(int mrt_errno)
 		ft_putstr_fd("Failed to write to bmp file (", FD_STDERR);
 }
 
-int		mrt_errend(int mrt_errno)
+int			mrt_errend(int mrt_errno)
 {
 	ft_putstr_fd("Error\n", FD_STDERR);
 	if (mrt_errno < ERR_FILETYPE)

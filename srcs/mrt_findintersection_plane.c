@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 11:52:32 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/12 08:49:09 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 12:18:33 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 #include "math_utils.h"
 #include "minirt.h"
 
-t_surface	mrt_findintersection_plane_solve(t_ray *ray, t_plane *plane)
+static t_surface	mrt_findintersection_plane_solve(t_ray *ray, t_plane *plane)
 {
 	t_surface	surface;
 	double		innerprod_tmp;
 	double		vec_tmp[3];
 
 	surface.dist = -1.0;
-	innerprod_tmp = math_vec3_innerprod(ray->dir, plane->orien);	
+	innerprod_tmp = math_vec3_innerprod(ray->dir, plane->orien);
 	if (mrt_isineps(innerprod_tmp))
 		return (surface);
 	else if (innerprod_tmp < 0.0)
@@ -36,7 +36,7 @@ t_surface	mrt_findintersection_plane_solve(t_ray *ray, t_plane *plane)
 	return (surface);
 }
 
-t_surface	mrt_findintersection_plane(t_ray *ray, t_list *planes)
+t_surface			mrt_findintersection_plane(t_ray *ray, t_list *planes)
 {
 	t_surface	surface;
 	t_surface	surface_tmp;

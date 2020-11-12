@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/06 18:16:58 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/12 08:49:09 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 12:23:04 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void		math_vec3_normalize(double *vec, double *normalizedvec);
 double		math_vec3_innerprod(double *a, double *b);
 void		math_vec3_outerprod(double *a, double *b, double *ans);
 
-int	    	math_absi(int intnbr);
-long    	math_absl(long longnbr);
-float   	math_absf(float floatnbr);
-double  	math_absd(double doublenbr);
+int			math_absi(int intnbr);
+long		math_absl(long longnbr);
+float		math_absf(float floatnbr);
+double		math_absd(double doublenbr);
 
 #endif

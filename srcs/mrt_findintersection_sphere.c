@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/07 20:29:11 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/12 08:49:09 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 12:09:10 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "math_utils.h"
 #include "minirt.h"
 
-static double		sphere_calc_dist(t_ray *ray, t_sphere *sphere, int *flg_inside)
+static double		sphere_calc_dist(t_ray *ray, t_sphere *sphere,
+										int *flg_inside)
 {
 	double		b;
 	double		c;

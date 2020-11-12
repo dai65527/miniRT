@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 08:57:50 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/12 08:49:09 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 12:11:57 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "math_utils.h"
 #include "minirt.h"
 
-static int		sqr_isinsqr(t_sqr *sqr, t_surface surface)
+static int			sqr_isinsqr(t_sqr *sqr, t_surface surface)
 {
 	double		vec_cp[3];
 	double		unitvec_x[3];
@@ -57,7 +57,7 @@ static t_surface	sqr_solve(t_ray *ray, t_sqr *sqr)
 	return (surface);
 }
 
-t_surface	mrt_findintersection_sqr(t_ray *ray, t_list *sqrs)
+t_surface			mrt_findintersection_sqr(t_ray *ray, t_list *sqrs)
 {
 	t_surface	surface;
 	t_surface	surface_tmp;

@@ -6,14 +6,14 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/05 12:13:46 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/10 11:16:47 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 12:06:27 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <math.h>
 #include "minirt.h"
 
-int			mrt_readfile_checkscene(t_scene *scene)
+int		mrt_readfile_checkscene(t_scene *scene)
 {
 	int		res;
 
@@ -38,7 +38,7 @@ int			mrt_readfile_checkscene(t_scene *scene)
 	return (NOERR);
 }
 
-int		mrt_readfile_checkratio(double ratio)	
+int		mrt_readfile_checkratio(double ratio)
 {
 	return (ratio < 0.0 || ratio > 1.0);
 }

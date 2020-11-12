@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/09 08:57:50 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/12 08:49:09 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 12:08:33 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "math_utils.h"
 #include "minirt.h"
 
-static int		tgl_isintgl(t_tgl *tgl, t_surface surface)
+static int			tgl_isintgl(t_tgl *tgl, t_surface surface)
 {
 	double	vec_apx[3];
 	double	vec_a2p[3];
@@ -39,7 +39,7 @@ static int		tgl_isintgl(t_tgl *tgl, t_surface surface)
 	return (0);
 }
 
-static int	tgl_calc_normvec(t_tgl *tgl, double *normvec)
+static int			tgl_calc_normvec(t_tgl *tgl, double *normvec)
 {
 	double	vec_ab[3];
 	double	vec_bc[3];
@@ -75,7 +75,7 @@ static t_surface	tgl_solve(t_ray *ray, t_tgl *tgl)
 	return (surface);
 }
 
-t_surface	mrt_findintersection_tgl(t_ray *ray, t_list *tgls)
+t_surface			mrt_findintersection_tgl(t_ray *ray, t_list *tgls)
 {
 	t_surface	surface;
 	t_surface	surface_tmp;
