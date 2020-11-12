@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/31 09:13:19 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/12 09:03:47 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 09:17:44 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,21 @@
 /*
 ** err_code
 */
-# define NOERR			0x0000
-# define ERR_ARGC		0x0001
-# define ERR_OPT		0x0002
-# define ERR_MALLOCFAIL	0x0003
-# define ERR_FILETYPE	0x0101
-# define ERR_FILEOPEN	0x0102
-# define ERR_FILEREAD	0x0103
-# define ERR_FILEWRONG	0x0104
-# define ERR_MLXINIT	0x0201
-# define ERR_MLXIMG		0x0202
-# define ERR_MLXLOOP	0x0203
-# define ERR_BMPOPEN	0x0301
-# define ERR_FNTOOLONG	0x0302
-# define ERR_FILEWRITE	0x0303
+# define NOERR			0
+# define ERR_ARGCFEW	1
+# define ERR_ARGCMANY	2
+# define ERR_OPT		3
+# define ERR_MALLOCFAIL	4
+# define ERR_FILETYPE	101
+# define ERR_FILEOPEN	102
+# define ERR_FILEREAD	103
+# define ERR_FILEWRONG	104
+# define ERR_MLXINIT	201
+# define ERR_MLXIMG		202
+# define ERR_MLXLOOP	203
+# define ERR_BMPOPEN	301
+# define ERR_FNTOOLONG	302
+# define ERR_FILEWRITE	303
 
 /*
 ** configuration

@@ -20,8 +20,10 @@ int		main(int argc, char **argv)
 	t_scene	scene;
 	t_list	*screens;
 
-	if (argc != 2 && argc != 3)
-		return (mrt_errend(ERR_ARGC));
+	if (argc < 2)
+		return (mrt_errend(ERR_ARGCFEW));
+	if (argc > 3)
+		return (mrt_errend(ERR_ARGCMANY));
 	flg_bmp = 0;
 	if (argc == 3)
 	{
