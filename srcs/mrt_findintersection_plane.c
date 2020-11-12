@@ -6,7 +6,7 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/08 11:52:32 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/12 12:18:33 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 13:46:10 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "math_utils.h"
 #include "minirt.h"
 
-static t_surface	mrt_findintersection_plane_solve(t_ray *ray, t_plane *plane)
+t_surface			mrt_findintersection_plane_solve(t_ray *ray, t_plane *plane)
 {
 	t_surface	surface;
 	double		innerprod_tmp;
