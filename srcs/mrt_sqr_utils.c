@@ -6,26 +6,13 @@
 /*   By: dnakano <dnakano@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/11/01 21:04:41 by dnakano           #+#    #+#             */
-/*   Updated: 2020/11/10 11:17:04 by dnakano          ###   ########.fr       */
+/*   Updated: 2020/11/12 09:08:05 by dnakano          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 #include "minirt.h"
-
-void		mrt_printsqr(void *sqr_pt)
-{
-	t_sqr	*sqr;
-
-	sqr = (t_sqr *)sqr_pt;
-	ft_printf("center: [%g, %g, %g]\n", sqr->pos[0], sqr->pos[1], sqr->pos[2]);
-	ft_printf("orientation: [%g, %g, %g]\n",
-		sqr->orien[0], sqr->orien[1], sqr->orien[2]);
-	ft_printf("size: %g\n", sqr->size);
-	ft_printf("color: %d\n", sqr->color);
-	ft_printf("\n");
-}
 
 int			mrt_readfile_storescene_sqr(const char *line, t_scene *scene)
 {
