@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 # WHEN USE ON MACOS CHANGE "LINUX" TO "MACOS" (OR SIMPLY COMMENTOUT)
-OS				:=	LINUX
+OS				:=	MACOS
 
 CC				:=	gcc
 ifeq ($(OS),LINUX)
