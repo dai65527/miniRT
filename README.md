@@ -1,5 +1,5 @@
 # miniRT
-A mini Ray Tracer program written by C.
+A mini Ray Tracer program written in C.
 
 # Figures
 This program can render following figures.
